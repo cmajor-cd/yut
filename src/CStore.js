@@ -165,5 +165,5 @@ class CStore {
 // }
 
 // module.exports = CStore;
-// export default CStore;
-export { CStore };
+export default CStore;
+// export { CStore };

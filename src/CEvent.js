@@ -88,5 +88,5 @@ class CEvent {
 }
 
 // module.exports = CEvent;
-// export default CEvent
-export {CEvent};
+export default CEvent
+// export {CEvent};

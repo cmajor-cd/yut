@@ -1,0 +1,31 @@
+{
+  "name": "yut",
+  "version": "0.9.0",
+  "description": "A light web client app js framework, that based on OOP. You can say it's writed for C++ programmer.",
+  "main": "index.js",
+  "scripts": {
+    "debug": "webpack --progress --colors --watch",
+    "dev": "webpack",
+    "build": "webpack -p"
+  },
+  "keywords": [
+    "yut"
+  ],
+  "author": {
+    "name": "Yang Yutong",
+    "email": "70248717@qq.com"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {}
+}

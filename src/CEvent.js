@@ -33,27 +33,24 @@ class CEvent {
         //  ...}
         this.handlers = {};
     }
-}
-CEvent.prototype = {
-    constructor: CEvent, //constructor
     /* regist new event and handler fucntion
     *  @param: 
     *      type -> event
     *      handler -> call back
     */
-    addEvent: function(type, handler){
+    addEvent(type, handler){
         //1. check if this event has exist or not
         if(typeof this.handlers[type] == 'undefined'){
             this.handlers[type] = [];
         }
         //2.push new event and reg handler
         this.handlers[type].push(handler);
-    },
+    }
     /* trigger the event with type and other parameters are allowed to be attached
     *  @param: 
     *      event -> {type: myevent, others: xxx, ...}
     */
-    triggerEvent: function(event){
+    triggerEvent(event){
         if(!event.target){
             event.target = this;
         }
@@ -66,13 +63,13 @@ CEvent.prototype = {
                 handlers[i](event);
             }
         }
-    },
+    }
     /* remove the event handler mapping
     *  @param: 
     *      type -> event
     *      handler -> call back
     */
-   removeEvHandler: function(type, aHandler){
+   removeEvHandler(type, aHandler){
         //1. check if this event has exist and it's a array
         if(this.handlers[type] instanceof Array){
             //2. locate the right event in mapping
@@ -88,7 +85,8 @@ CEvent.prototype = {
             handlers.splice(i, 1);
         }
     }
-};
+}
 
 // module.exports = CEvent;
-export default CEvent;
+// export default CEvent
+export {CEvent};

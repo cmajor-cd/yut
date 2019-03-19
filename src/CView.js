@@ -16,6 +16,9 @@
  */
 // yutls.includeJs('./CStore.js');
 // require('./CStore');
+import {CStore} from './CStore';
+import {CEvent} from './CEvent';
+
 class CView {
     constructor() {
         // constructor

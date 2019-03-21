@@ -28,7 +28,7 @@
 
 # Linker output
 *.ilk
-#*.map
+*.map
 *.exp
 
 # Precompiled Headers
@@ -71,8 +71,8 @@ Mkfile.old
 dkms.conf
 
 # npm
-
 node_modules/
+release/
 dist/
 npm-debug.log*
 yarn-debug.log*
@@ -89,6 +89,3 @@ package-lock.json
 *.sln
 
 # compile files
-demo_npm/node_modules/
-demo_npm/release/
-demo_npm/package-lock.json

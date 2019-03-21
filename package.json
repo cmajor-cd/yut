@@ -1,15 +1,17 @@
 {
   "name": "yut",
-  "version": "0.9.1",
+  "version": "0.9.3",
   "description": "A light web client app js framework, that based on OOP. You can say it's writed for C++ programmer.",
-  "main": "index.js",
+  "main": "./release/yut.js",
   "scripts": {
     "debug": "webpack --progress --colors --watch",
     "dev": "webpack",
     "build": "webpack -p"
   },
   "keywords": [
-    "yut"
+    "yut",
+    "framework",
+    "oop"
   ],
   "author": {
     "name": "Yang Yutong",
@@ -18,7 +20,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/cmajor-cd/yut"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

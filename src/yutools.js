@@ -310,7 +310,6 @@ class yutls {
     // if ( typeof window === "object" && typeof window.document === "object" ) {
     //     window.yutls = yutls;
     // }
-    // module.exports = yutls;
     export default yutls;
 // })(window);
 

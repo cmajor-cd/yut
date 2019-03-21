@@ -88,4 +88,3 @@ yarn-error.log*
 *.sln
 
 # compile files
-release/

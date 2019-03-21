@@ -164,6 +164,5 @@ class CStore {
 //     constructor: CStore,
 // }
 
-// module.exports = CStore;
 export default CStore;
 // export { CStore };

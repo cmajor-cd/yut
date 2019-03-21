@@ -113,6 +113,5 @@ class theApp {
     //     window.theApp = window.yut = theApp//window.$;
     // }
 //
-// module.exports = theApp;
 export default theApp;
 // })(window);

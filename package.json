@@ -1,25 +1,36 @@
 {
-  "name": "yut",
-  "version": "0.9.1",
-  "description": "A light web client app js framework, that based on OOP. You can say it's writed for C++ programmer.",
-  "main": "index.js",
-  "scripts": {
-    "debug": "webpack --progress --colors --watch",
-    "dev": "webpack",
-    "build": "webpack -p"
+  "_from": "yut",
+  "_id": "yut@0.9.0",
+  "_inBundle": false,
+  "_integrity": "sha512-VJpt9qZb0NGXAh0on2VdddoY2L4O8J0Y46DoKD43dVrO0hGrlosfAwe+MkwUSU2Jvx10cVZCDtJop5te2ftfAQ==",
+  "_location": "/yut",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "yut",
+    "name": "yut",
+    "escapedName": "yut",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
-  "keywords": [
-    "yut"
+  "_requiredBy": [
+    "#USER",
+    "/"
   ],
+  "_resolved": "https://registry.npmjs.org/yut/-/yut-0.9.0.tgz",
+  "_shasum": "715132c655ecc2cd0af6a04fdc1490ba26423e01",
+  "_spec": "yut",
+  "_where": "D:\\workspace\\VS\\Demo",
   "author": {
     "name": "Yang Yutong",
     "email": "70248717@qq.com"
   },
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "A light web client app js framework, that based on OOP. You can say it's writed for C++ programmer.",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -27,5 +38,20 @@
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   },
-  "dependencies": {}
+  "keywords": [
+    "yut"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "yut",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "build": "webpack -p",
+    "debug": "webpack --progress --colors --watch",
+    "dev": "webpack"
+  },
+  "version": "0.9.0"
 }

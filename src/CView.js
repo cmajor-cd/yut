@@ -113,7 +113,7 @@ class CView {
         //2. init the objects
         this._strViewID = option.aNodeID;
         this.node = document.getElementById(option.aNodeID);
-        this.jqNode = $('#' + option.aNodeID); // jQuery node object
+        // this.jqNode = $('#' + option.aNodeID); // jQuery node object
         // 1. load view'html 2.multi language 3.regiest ctrls
         this._loadHtml();
     }

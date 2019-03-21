@@ -50,6 +50,7 @@ class theApp {
             return;
         }
         let oMainFrm = new aClassName(this);
+        // console.log(aClassName);console.log(oMainFrm);//YYT
         theApp.m_hMainWnd = oMainFrm;
         oMainFrm.activeView(); // avtive itself, this line is used to trigger mainFrm's evActived.
     }

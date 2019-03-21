@@ -24,7 +24,7 @@ module.exports = {
                         presets:["env"]
                     }
                 },
-                exclude:path.resolve(__dirname,"node_modules|demo"),
+                exclude:path.resolve(__dirname,"node_modules|release|demo"),
                 include:path.resolve(__dirname,"src")
             }
         ]

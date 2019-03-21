@@ -15,6 +15,7 @@
  * -----------------------------------------
  */
 // yutls.includeJs('./CStore.js');
+import theApp from './yutapp';
 import CStore from './CStore';
 import CEvent from './CEvent';
 import yutls from './yutools';

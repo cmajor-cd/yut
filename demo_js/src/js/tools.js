@@ -66,13 +66,20 @@
     }
     //
     // Includes a script file by writing a script tag.
-    tools.includeScript = function(src) {
+    tools.includeJs = function(src) {
         document.write("<script type=\"text/javascript\" src=\"" + src + "\"></script>");
     }
 
     // Includes a style sheet by writing a style tag.
-    tools.includeStyleSheet = function(src) {
-        document.write("<style type=\"text/css\"> @import url(\"" +  src + "\"); </style>");
+    // tools.includeStyleSheet = function(src) {
+    //     document.write("<style type=\"text/css\"> @import url(\"" +  src + "\"); </style>");
+    // }
+    // Includes a style sheet by writing a style tag.
+    tools.includeCss = function(src) {
+        // document.write("<style type=\"text/css\"> @import url(\"" +  src + "\"); </style>");
+        var _style = document.createElement('style');
+        _style.innerHTML = ' @import url(\"' +  src + '\");';
+        document.getElementsByTagName('head')[0].appendChild(_style);
     }
     // Localizing: multi-language
     tools.language = 'cn';

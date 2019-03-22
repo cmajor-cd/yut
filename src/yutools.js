@@ -22,7 +22,11 @@ class yutls {
     }
     // Includes a style sheet by writing a style tag.
     static includeCss(src) {
-        document.write("<style type=\"text/css\"> @import url(\"" + src + "\"); </style>");
+        // document.write("<style type=\"text/css\"> @import url(\"" +  src + "\"); </style>");
+        var _style = document.createElement('style');
+        _style.innerHTML = ' @import url(\"' +  src + '\");';
+        document.getElementsByTagName('head')[0].appendChild(_style);
+        console.log(_style.innerHTML);
     }
     /* -- Localizing: multi-language ---
         * aLanguage: { language: 'cn',

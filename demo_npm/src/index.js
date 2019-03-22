@@ -6,7 +6,6 @@ import CMainFrm from './views/CMainFrm';
 // import './views/CDashboardView';
 // import './views/CSysMaintView';
 // import './views/CSysStatusView/CSysStatusView';
-// tools.includeStyleSheet('./views/CSysStatusView/subviews/CLanView.css');
 tools.setGlobalDebugFlg(1);
 tools.setMockDebugFlg(1);
 
@@ -18,6 +17,4 @@ function Init()
     theApp.attachMainFrm(CMainFrm);
 }
 Init();
-
-// export default Init;
 

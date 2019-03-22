@@ -7,7 +7,7 @@ function CGnssView(hParent){
     let option = {
             aParent: hParent,
             aNodeID: 'ssvTabGnss',
-            aHtml: './views/CSysStatusView/subviews/CGnssView.html',
+            aHtml: './src/views/CSysStatusView/subviews/CGnssView.html',
             aRegCtrlCallBack: this.regCtrlCb,
             aLanguage: { language: 'cn', 
                         htmlMap: {'cn': _this.cnHtmlMap ,'en': _this.enHtmlMap,},

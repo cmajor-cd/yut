@@ -9,7 +9,7 @@ function CSysMaintView(hParent){
     let option = { 
             aParent: hParent,
             aNodeID: 'sysMaintView',
-            aHtml: './views/CSysMaintView.html',
+            aHtml: './src/views/CSysMaintView.html',
             aRegCtrlCallBack: this.regCtrlCb,
             aLanguage: { language: 'cn', //'en'
                         htmlMap: {'cn': _this.cnHtmlMap ,'en': _this.enHtmlMap,},

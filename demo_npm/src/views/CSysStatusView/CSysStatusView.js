@@ -16,7 +16,7 @@ class CSysStatusView extends CView{
         let option = {
             aParent: hParent,
             aNodeID: 'sysStatusView',
-            aHtml: './views/CSysStatusView/CSysStatusView.html',
+            aHtml: './src/views/CSysStatusView/CSysStatusView.html',
             aRegCtrlCallBack: this.regCtrlCb,
             aLanguage: {
             language: 'cn',

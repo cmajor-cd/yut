@@ -8,7 +8,7 @@ function CMainFrm(hParent){
     let option = {
         aParent: hParent,
         aNodeID: 'mainFrm',
-        aHtml: './views/CMainFrm.html',
+        aHtml: './src/views/CMainFrm.html',
         aRegCtrlCallBack: _this.regCtrlCb,
         aLanguage: { language: 'cn',//'en'
                     htmlMap: {'cn': _this.cnHtmlMap ,'en': _this.enHtmlMap,},

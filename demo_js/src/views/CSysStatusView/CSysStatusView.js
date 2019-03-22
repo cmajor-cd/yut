@@ -1,5 +1,5 @@
-yutls.includeJs('./views/CSysStatusView/subviews/CGnssView.js');
-yutls.includeJs('./views/CSysStatusView/subviews/CLanView.js');
+yutls.includeJs('./src/views/CSysStatusView/subviews/CGnssView.js');
+yutls.includeJs('./src/views/CSysStatusView/subviews/CLanView.js');
 /**
  * System View的主Class定义
  */
@@ -11,7 +11,7 @@ function CSysStatusView(hParent){
     let option = {
             aParent: hParent,
             aNodeID: 'sysStatusView',
-            aHtml: './views/CSysStatusView/CSysStatusView.html',
+            aHtml: './src/views/CSysStatusView/CSysStatusView.html',
             aRegCtrlCallBack: this.regCtrlCb,
             aLanguage: { language: 'cn', 
                         htmlMap: {'cn': _this.cnHtmlMap ,'en': _this.enHtmlMap,},

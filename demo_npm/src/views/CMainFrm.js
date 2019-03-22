@@ -1,16 +1,13 @@
 /**
  * main frame 主类定义
 */
-// yutools.includeJs('./views/CDashboardView.js');
-// yutools.includeJs('./views/CSysMaintView.js');
-import {appName,releaseVer} from '../version';
 import {yutls, theApp, CView, CTest} from 'yut';
+import {appName,releaseVer} from '../version';
 import CDashboardView from './CDashboardView';
 import CSysMaintView from './CSysMaintView';
 import CSysStatusView from './CSysStatusView/CSysStatusView';
 
 class CMainFrm extends CView{ // ! inherit from CView !
-// class CMainFrm {
     constructor(hParent) {
         // supper call before user 'this' pointer.
         super();
@@ -25,7 +22,7 @@ class CMainFrm extends CView{ // ! inherit from CView !
         let option = {
             aParent: hParent,
             aNodeID: 'mainFrm',
-            aHtml: './views/CMainFrm.html',
+            aHtml: './src/views/CMainFrm.html',
             aRegCtrlCallBack: _this.regCtrlCb,
             aLanguage: {
             language: 'cn',

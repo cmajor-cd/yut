@@ -26,7 +26,7 @@ class CDashboardView extends CView{
         let option = {
                 aParent: hParent,
                 aNodeID: 'dashboardView',
-                aHtml: './views/CDashboardView.html',
+                aHtml: './src/views/CDashboardView.html',
                 aRegCtrlCallBack: this.regCtrlCb,
                 aLanguage: { language: 'cn', 
                             htmlMap: {'cn': _this.cnHtmlMap ,'en': _this.enHtmlMap,},

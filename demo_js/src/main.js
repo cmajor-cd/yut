@@ -1,11 +1,11 @@
 // main.js
 // include release version
-yutls.includeJs('./version.js');
+yutls.includeJs('./src/version.js');
 // include views
-yutls.includeJs('./views/CDashboardView.js');
-yutls.includeJs('./views/CSysMaintView.js');
-yutls.includeJs('./views/CSysStatusView/CSysStatusView.js');
-yutls.includeJs('./views/CMainFrm.js');
+yutls.includeJs('./src/views/CDashboardView.js');
+yutls.includeJs('./src/views/CSysMaintView.js');
+yutls.includeJs('./src/views/CSysStatusView/CSysStatusView.js');
+yutls.includeJs('./src/views/CMainFrm.js');
 
 var gDebug = 1;
 var gMock = 1;

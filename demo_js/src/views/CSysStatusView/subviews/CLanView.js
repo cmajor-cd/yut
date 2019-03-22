@@ -1,5 +1,5 @@
 // demo: inlcude private css
-yutls.includeCss('./views/CSysStatusView/subviews/CLanView.css');
+tools.includeCss('./src/views/CSysStatusView/subviews/CLanView.css');
 //
 function CLanView(hParent){
     // constructor
@@ -9,7 +9,7 @@ function CLanView(hParent){
     let option = {
             aParent: hParent,
             aNodeID: 'ssvTabLan',
-            aHtml: './views/CSysStatusView/subviews/CLanView.html',
+            aHtml: './src/views/CSysStatusView/subviews/CLanView.html',
             aRegCtrlCallBack: this.regCtrlCb,
             aLanguage: { language: 'cn', 
                         htmlMap: {'cn': _this.cnHtmlMap ,'en': _this.enHtmlMap,},

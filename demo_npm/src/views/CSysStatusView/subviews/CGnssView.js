@@ -11,7 +11,7 @@ class CGnssView extends CView{
         let option = {
             aParent: hParent,
             aNodeID: 'ssvTabGnss',
-            aHtml: './views/CSysStatusView/subviews/CGnssView.html',
+            aHtml: './src/views/CSysStatusView/subviews/CGnssView.html',
             aRegCtrlCallBack: this.regCtrlCb,
             aLanguage: {
             language: 'cn',

@@ -92,3 +92,6 @@ package-lock.json
 demo_npm/node_modules/
 demo_npm/release/
 demo_npm/package-lock.json
+demo_js/node_modules/
+demo_js/release/
+demo_js/package-lock.json

@@ -23,12 +23,15 @@ class tools{
     static msgDebug(strMsg){
         console.debug(strMsg);
     }
-    static includeScript(src) {
+    static includeJs(src) {
         document.write("<script type=\"text/javascript\" src=\"" + src + "\"></script>");
     }
     // Includes a style sheet by writing a style tag.
-    static includeStyleSheet(src) {
-        document.write("<style type=\"text/css\"> @import url(\"" +  src + "\"); </style>");
+    static includeCss(src) {
+        // document.write("<style type=\"text/css\"> @import url(\"" +  src + "\"); </style>");
+        var _style = document.createElement('style');
+        _style.innerHTML = ' @import url(\"' +  src + '\");';
+        document.getElementsByTagName('head')[0].appendChild(_style);
     }
     /**
      * 对数字转字符串进行补0操作

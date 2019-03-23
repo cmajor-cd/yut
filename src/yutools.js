@@ -26,7 +26,7 @@ class yutls {
         var _style = document.createElement('style');
         _style.innerHTML = ' @import url(\"' +  src + '\");';
         document.getElementsByTagName('head')[0].appendChild(_style);
-        console.log(_style.innerHTML);
+        // console.log(_style.innerHTML);
     }
     /* -- Localizing: multi-language ---
         * aLanguage: { language: 'cn',

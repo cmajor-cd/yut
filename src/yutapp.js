@@ -22,10 +22,6 @@
 // yutls.includeJs('./CEvent.js');
 // yutls.includeJs('./CStore.js');
 // yutls.includeJs('./CView.js');
-// require('./yutools');
-// require('./CEvent');
-// require('./CStore');
-// require('./CView');
 
 //code
 // (function(window,undefined){
@@ -50,7 +46,6 @@ class theApp {
             return;
         }
         let oMainFrm = new aClassName(this);
-        // console.log(aClassName);console.log(oMainFrm);//YYT
         theApp.m_hMainWnd = oMainFrm;
         oMainFrm.activeView(); // avtive itself, this line is used to trigger mainFrm's evActived.
     }

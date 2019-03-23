@@ -1,5 +1,3 @@
-//https://www.cnblogs.com/luojianjian/p/8053113.html
-//
 const path = require("path");//nodejs中的基本包，处理路径的
 // const fs = require("fs");//nodejs中的基本包，处理文件的
 var HtmlWebpackPlugin = require('html-webpack-plugin'); //打包html的插件

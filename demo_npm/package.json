@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cmajor-cd/Demo.git"
+    "url": ""
   },
   "keywords": [
     "demo"
@@ -18,9 +18,9 @@
   "author": "yyt",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cmajor-cd/Demo/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/cmajor-cd/Demo#readme",
+  "homepage": "",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",

@@ -281,6 +281,7 @@ class yutls {
             xmlHttpReq.setRequestHeader("Content-Type", aHeaderContentType);
             }
             //aParam = "command=loginByUserPWD&login_user=zhangsan & login_pwd=1234";
+            console.log('ajax->aParam:'+aParam);
             xmlHttpReq.send(aParam);
         }
     }

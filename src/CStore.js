@@ -120,7 +120,7 @@ class CStore {
             }
         }
         else {
-            console.error('CStore._renderCb:: invalid variant! ');
+            console.warn('CStore._renderCb:: invalid variant! ');
         }
     }
     setRenderData(aData) {

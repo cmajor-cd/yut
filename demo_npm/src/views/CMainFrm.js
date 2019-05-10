@@ -3,6 +3,7 @@
 */
 import {yutls, theApp, CView, CTest} from 'yut';
 import {appName,releaseVer} from '../version';
+import CLoginView from './CLoginView';
 import CDashboardView from './CDashboardView';
 import CSysMaintView from './CSysMaintView';
 import CSysStatusView from './CSysStatusView/CSysStatusView';
@@ -30,7 +31,7 @@ class CMainFrm extends CView{ // ! inherit from CView !
                 jsMap: { 'cn': _this.cnJsMap, 'en': _this.enJsMap, }
             },
             aRenderData: _this.Data,
-            aChildViews: [CDashboardView, CSysStatusView, CSysMaintView],
+            aChildViews: [CLoginView, CDashboardView, CSysStatusView, CSysMaintView],
             aEvCallback: { evMounted: _this.evMainFrmMounted, evActived: _this.evMainFrmActived },
         };
         _this.init(option);
@@ -60,7 +61,8 @@ class CMainFrm extends CView{ // ! inherit from CView !
     }
     evMainFrmMounted(self) {
         console.log('CMainFrm envMounted CALLED!');
-        self.whoami();
+        // 显示LOGView
+        self.activeView('loginView');
     }
     whoami() {
         console.log('THIS is CMainFrm!');

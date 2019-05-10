@@ -69,11 +69,11 @@ module.exports = {
             }
         ]
     },
-    // plugins:[
-    //     new HtmlWebpackPlugin({
-    //         filename:'index.html',//打包好后，新建的html名字为first.html
-    //         template:'./src/index.html'//main.html为模板去创建新的html文件
-    //     })
-    // ]
+    plugins:[
+        new HtmlWebpackPlugin({
+            filename:'index.html',//打包好后，新建的html名字为index.html
+            template:'./app.html'//'./app.html'为模板去创建新的html文件
+        })
+    ]
     
 }

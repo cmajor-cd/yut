@@ -14,7 +14,7 @@ function CMainFrm(hParent){
                     htmlMap: {'cn': _this.cnHtmlMap ,'en': _this.enHtmlMap,},
                     jsMap: {'cn': _this.cnJsMap,'en': _this.enJsMap,} },
         aRenderData: _this.Data,
-        aChildViews: [CDashboardView,CSysStatusView, CSysMaintView], //! childviews, will be created by this line !!
+        aChildViews: [CLoginView, CDashboardView,CSysStatusView, CSysMaintView], //! childviews, will be created by this line !!
         aEvCallback: {evMounted: _this.evMainFrmMounted, evActived: _this.evMainFrmActived},
     };
     _this.init(option);
@@ -45,7 +45,9 @@ CMainFrm.prototype.evMainFrmActived = function(self){ // or use: (self)=>{}
 }
 CMainFrm.prototype.evMainFrmMounted = function(self){
     console.log('CMainFrm envMounted CALLED!');
-    self.whoami();
+    // 显示LOGView
+    self.activeView('loginView');
+    // self.whoami();
 }
 CMainFrm.prototype.whoami = function(){
     console.log('THIS is CMainFrm!');

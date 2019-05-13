@@ -1,13 +1,15 @@
 import {yutls,theApp} from 'yut';
 import {appName,releaseVer} from './version';
-import tools from './js/tools';
 import CMainFrm from './views/CMainFrm';
+// import tools from './js/tools';
 // include views
 // import './views/CDashboardView';
 // import './views/CSysMaintView';
 // import './views/CSysStatusView/CSysStatusView';
-tools.setGlobalDebugFlg(1);
-tools.setMockDebugFlg(1);
+var data = {'noDebug':'/cgi-bin/cgi.cgi',
+            'mock':'./debug/mock',
+            'php':'./debug/action/action.test.php'};
+yutls.setGlobalDebugFlg(data, 'mock');
 
 //
 // the main entry

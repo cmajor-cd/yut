@@ -8,7 +8,37 @@
 // (function(window,undefined){
 //
 class yutls {
-    constructor() { }
+    constructor() {
+        this.gDebugData = 0;
+        this.gDebugFlg = 0;
+     }
+    //-debug functions
+    /**
+     * set status of debug, and set the return string of debug url.
+     * @param data: object of {debug:url string}.
+     * @param flg: the type of debug. 
+     *  e.g. 
+     *  var data = {'noDebug':'/cgi-bin/cgi.cgi',
+     *              'mock':'./debug/mock',
+     *              'php':'./debug/action/action.test.php'};
+     *   setGlobalDebugFlg(data, 'mock');
+     *   ...
+     *   getDebugUrl(); => this line return './debug/mock'
+     */
+    static setGlobalDebugFlg(data, flg){
+        if ((data == null) || (data == undefined)) {
+            this.msgBox('invalid input data!');
+            return;
+        }
+        //
+        this.gDebugData = data;
+        this.gDebugFlg = flg;
+    }
+    static getDebugURL(){
+        let type = this.gDebugFlg;
+        return this.gDebugData[type];
+    }
+    //---
     static msgBox(strMsg) {
         alert(strMsg);
     }

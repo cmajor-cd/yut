@@ -1,5 +1,5 @@
-import {theApp, CView} from 'yut';
-import tools from '../../../js/tools';
+import {yutls, theApp, CView} from 'yut';
+// import tools from '../../../js/tools';
 
 class CGnssView extends CView{
     constructor(hParent) {
@@ -64,7 +64,7 @@ class CGnssView extends CView{
         let parameters = JSON.stringify(str);
         $.ajax({
             type: "POST",
-            url: tools.getURL(),
+            url: yutls.getDebugURL(),
             data: parameters,
             success: (res) => {
                 // 返回参数格式

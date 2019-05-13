@@ -1,5 +1,5 @@
 import {yutls, CView} from 'yut';
-import tools from '../js/tools';
+// import tools from '../js/tools';
 /**
  * CSysMaintView View的主Class定义
  */
@@ -63,7 +63,7 @@ class CSysMaintView extends CView{
             var parameters = JSON.stringify(str);
             $.ajax({
                 type: "POST",
-                url: tools.getURL(),
+                url: yutls.getDebugURL(),
                 data: parameters,
                 success: (res) => {
                     // 返回参数格式
@@ -94,7 +94,7 @@ class CSysMaintView extends CView{
             let parameters = JSON.stringify(str);
             $.ajax({
                 type: "POST",
-                url: tools.getURL(),
+                url: yutls.getDebugURL(),
                 data: parameters,
                 success: (res) => {
                     // 返回参数格式

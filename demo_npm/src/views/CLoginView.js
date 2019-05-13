@@ -1,4 +1,5 @@
-import {yutls, CView} from 'yut';
+import {yutls, theApp, CView} from 'yut';
+// import tools from '../js/tools';
 /**
  * Login View的主Class定义
  */
@@ -42,7 +43,7 @@ class CLoginView extends CView{
                 "pwd": $("#lgPWDInput").val()
             };
             let parameters = JSON.stringify(str);
-            let url = getURL();
+            let url = yutls.getDebugURL();
             $.ajax({
                 type: "POST",
                 url: url,

@@ -1,7 +1,7 @@
 import {yutls,CView} from 'yut';
-import tools from '../../../js/tools';
+// import tools from '../../../js/tools';
 // demo: inlcude private css
-tools.includeCss('./src/views/CSysStatusView/subviews/CLanView.css');
+yutls.includeCss('./src/views/CSysStatusView/subviews/CLanView.css');
 //
 class CLanView extends CView{
     constructor(hParent) {
@@ -42,7 +42,7 @@ class CLanView extends CView{
         let parameters = JSON.stringify(str);
         $.ajax({
             type: "POST",
-            url: tools.getURL(),
+            url: yutls.getDebugURL(),
             data: parameters,
             success: (res) => {
                 // 返回参数格式

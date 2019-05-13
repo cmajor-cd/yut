@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "babel-loader": "^7.1.5",
-    "yut": "^0.9.4"
+    "yut": "^0.9.5"
   }
 }

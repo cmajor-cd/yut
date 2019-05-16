@@ -2,7 +2,7 @@
 A light web client app js framework, that based on OOP. You can say it's writed for C++ programmer.
 # how to use?
 ## usage of npm ##
-* instal npm lib
+* install npm lib
 ```
 npm install yut
 ```

@@ -1,8 +1,11 @@
-import {yutls, CView} from 'yut';
-// import tools from '../js/tools';
 /**
  * CSysMaintView View的主Class定义
  */
+import htmlTemplate from './CSysMaintView.html';
+
+import $ from 'jquery';
+import {yutls, CView} from 'yut';
+// import tools from '../js/tools';
 class CSysMaintView extends CView{
     constructor(hParent) {//-- 构造函数
         // supper call before user 'this' pointer.
@@ -32,7 +35,7 @@ class CSysMaintView extends CView{
         let option = {
             aParent: hParent,
             aNodeID: 'sysMaintView',
-            aHtml: './src/views/CSysMaintView.html',
+            aHtml: htmlTemplate, //'./src/views/CSysMaintView.html',
             aRegCtrlCallBack: this.regCtrlCb,
             aLanguage: {
             language: 'cn',

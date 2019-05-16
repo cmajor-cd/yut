@@ -1,6 +1,9 @@
+import htmlTemplate from './CDashboardView.html';
+import $ from 'jquery';
 import {yutls, CView} from 'yut';
-
-/***** CDashboardView View的主Class定义 */
+/**
+ * CDashboardView View的主Class定义
+ * */
 class CDashboardView extends CView{
     constructor(hParent){
         // supper call before user 'this' pointer.
@@ -28,7 +31,7 @@ class CDashboardView extends CView{
         let option = {
                 aParent: hParent,
                 aNodeID: 'dashboardView',
-                aHtml: './src/views/CDashboardView.html',
+                aHtml: htmlTemplate, //'./src/views/CDashboardView.html',
                 aRegCtrlCallBack: this.regCtrlCb,
                 aLanguage: { language: 'cn', 
                             htmlMap: {'cn': _this.cnHtmlMap ,'en': _this.enHtmlMap,},

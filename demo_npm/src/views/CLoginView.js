@@ -1,8 +1,11 @@
-import {yutls, theApp, CView} from 'yut';
-// import tools from '../js/tools';
 /**
  * Login View的主Class定义
  */
+import htmlTemplate from './CLoginView.html';
+
+import $ from 'jquery';
+import {yutls, theApp, CView} from 'yut';
+// import tools from '../js/tools';
 class CLoginView extends CView{
     constructor(hParent){
         // supper call before user 'this' pointer.
@@ -19,7 +22,7 @@ class CLoginView extends CView{
         let option = {
             aParent: hParent,
             aNodeID: 'loginView',
-            aHtml: './src/views/CLoginView.html',
+            aHtml: htmlTemplate,//'./src/views/CLoginView.html',
             aRegCtrlCallBack: this.regCtrlCb,
             aLanguage: { language: 'cn', 
                         htmlMap: {'cn': _this.cnHtmlMap ,'en': _this.enHtmlMap,},

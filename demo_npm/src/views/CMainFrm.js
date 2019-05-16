@@ -1,19 +1,28 @@
 /**
  * main frame 主类定义
-*/
+ * 1. this mainFrm includes it's html template in "option.aHtml"
+ * 2. this mainFrm includes 4 subviews, that are defined in "option.aChildViews"
+ * 3. this mainFrm defines 2 event, that are defined in "option.aEvCallback"
+ * 4. this mainFrm defines the language in "option.enHtmlMap/cnHtmlMap". You can also use 'CMainFrm.prototype.enHtmlMap' to let the Class code is clear.
+ * 5. this mainFrm defines Two-way binding(双向数据绑定) in "option.aRenderData". 
+ */
+import htmlTemplate from './CMainFrm.html';
+
+import $ from 'jquery';
 import {yutls, theApp, CView, CTest} from 'yut';
 import {appName,releaseVer} from '../version';
 import CLoginView from './CLoginView';
 import CDashboardView from './CDashboardView';
 import CSysMaintView from './CSysMaintView';
 import CSysStatusView from './CSysStatusView/CSysStatusView';
-
+//
 class CMainFrm extends CView{ // ! inherit from CView !
     constructor(hParent) {
         // supper call before user 'this' pointer.
         super();
         let _this = this;
         //1. internal variant / function
+        _this.evCount = 0; //example of the event trigger counter.
         _this.Data = {
             version: releaseVer,
         };
@@ -23,7 +32,7 @@ class CMainFrm extends CView{ // ! inherit from CView !
         let option = {
             aParent: hParent,
             aNodeID: 'mainFrm',
-            aHtml: './src/views/CMainFrm.html',
+            aHtml: htmlTemplate, //'./src/views/CMainFrm.html',
             aRegCtrlCallBack: _this.regCtrlCb,
             aLanguage: {
             language: 'cn',
@@ -58,11 +67,17 @@ class CMainFrm extends CView{ // ! inherit from CView !
     }
     evMainFrmActived(self) {
         console.log('CMainFrm evActived CALLED!');
-    }
-    evMainFrmMounted(self) {
-        console.log('CMainFrm envMounted CALLED!');
         // 显示LOGView
         self.activeView('loginView');
+    }
+    /**
+     * evMounted could be triggered several times!
+     * each childview of this VIEW is compleed evMounted, this event will be triggered one time.
+     * because, the CEvent class DON't remove the event from event array, after it is triggered.
+     */
+    evMainFrmMounted(self) {
+        self.evCount++;
+        console.log('CMainFrm envMounted CALLED(' + self.evCount+' times)');
     }
     whoami() {
         console.log('THIS is CMainFrm!');

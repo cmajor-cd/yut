@@ -1,5 +1,8 @@
 /**
- * YangYutong: tools for HTMLMainElement.js
+ * tools for demo.js
+ * most of them are included in yutls lib.
+ * --------------
+ * YangYutong
  * 2018-4-12
  */ 
 

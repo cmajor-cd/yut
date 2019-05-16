@@ -1,3 +1,6 @@
+import htmlTemplate from './CGnssView.html';
+
+import $ from 'jquery';
 import {yutls, theApp, CView} from 'yut';
 // import tools from '../../../js/tools';
 
@@ -11,7 +14,7 @@ class CGnssView extends CView{
         let option = {
             aParent: hParent,
             aNodeID: 'ssvTabGnss',
-            aHtml: './src/views/CSysStatusView/subviews/CGnssView.html',
+            aHtml: htmlTemplate, //'./src/views/CSysStatusView/subviews/CGnssView.html',
             aRegCtrlCallBack: this.regCtrlCb,
             aLanguage: {
             language: 'cn',

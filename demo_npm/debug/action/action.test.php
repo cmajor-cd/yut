@@ -1,7 +1,13 @@
 <?php
 /**
  * PHP 调试注意事项！
- * 1. 确保 main.js 中的 gDebug = 1 / gMock = 0
+ * 1. 确保 main.js/index.js 中的调试标记已经打开并正确设置php脚本位置。
+ * // set debug flag
+ * var data = {'noDebug':'/cgi-bin/cgi.cgi',
+ *            'mock':'./debug/mock',
+ *            'php':'./debug/action/action.test.php'};
+ * yutls.setGlobalDebugFlg(data, 'php');
+ * 
 */
 
 //action.login.php

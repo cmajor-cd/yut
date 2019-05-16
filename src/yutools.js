@@ -318,13 +318,15 @@ class yutls {
     /** loadHtml()
      * load html file into the node
      * @param aNode the node handle of DOM
-     * @param aFile source file
+     * @param aFileDat source html module
      * @param cbFunc callback function with input[node]
+     * 2019-05-15: remove ajax function, replace to ES6 import funciton to load the html file by a module.
      */
-    static load(aNode, aFile, cbFunc){
+    static load(aNode, aFileDat, cbFunc){
         if ((typeof cbFunc != 'function')||(typeof aNode == 'undefined')||(aNode == null) ){
             return;
         }
+    /* 2019-05-15: remove ajax function
         // internal func to add inne html
         function addHtml(data){
             aNode.innerHTML = data; //TODO,需要考察加载大文件时候是否需要做加载结束事件进行同步操作！
@@ -332,12 +334,14 @@ class yutls {
         }
         // call ajax to load file
         yutls.ajax({ 
-            url: aFile,
+            url: aFileDat,
             type: "POST",
             success: addHtml,
             error: cbFunc
         });
-
+    */
+        aNode.innerHTML = aFileDat; //TODO,需要考察加载大文件时候是否需要做加载结束事件进行同步操作！
+        cbFunc();
     }
 }
 

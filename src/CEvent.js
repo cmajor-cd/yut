@@ -3,6 +3,7 @@
  * Anthor: YangYutong <70248717@qq.com>
  * Create: 20181102
  * Description: 
+ *  1. event don't be removed after it is triggered.
  * Usage:
     function myEvHanderFunc(){
         console.log('my event is handled.');

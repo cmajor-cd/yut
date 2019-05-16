@@ -1,8 +1,13 @@
-import {yutls,CView} from 'yut';
-// import tools from '../../../js/tools';
+import htmlTemplate from './CLanView.html';
 // demo: inlcude private css
-yutls.includeCss('./src/views/CSysStatusView/subviews/CLanView.css');
-//
+// yutls.includeCss('./src/views/CSysStatusView/subviews/CLanView.css');
+import './CLanView.css'
+
+import $ from 'jquery';
+import {yutls,CView} from 'yut';
+/**
+ * Class defination for CLanView
+ */
 class CLanView extends CView{
     constructor(hParent) {
         // constructor
@@ -13,7 +18,7 @@ class CLanView extends CView{
         let option = {
             aParent: hParent,
             aNodeID: 'ssvTabLan',
-            aHtml: './src/views/CSysStatusView/subviews/CLanView.html',
+            aHtml: htmlTemplate, //'./src/views/CSysStatusView/subviews/CLanView.html',
             aRegCtrlCallBack: this.regCtrlCb,
             aLanguage: {
             language: 'cn',

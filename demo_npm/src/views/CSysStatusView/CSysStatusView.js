@@ -1,5 +1,7 @@
+import htmlTemplate from './CSysStatusView.html';
 // yutls.includeJs('./views/CSysStatusView/subviews/CGnssView.js');
 // yutls.includeJs('./views/CSysStatusView/subviews/CLanView.js');
+import $ from 'jquery';
 import {CView} from 'yut';
 import CGnssView from './subviews/CGnssView';
 import CLanView from './subviews/CLanView';
@@ -16,7 +18,7 @@ class CSysStatusView extends CView{
         let option = {
             aParent: hParent,
             aNodeID: 'sysStatusView',
-            aHtml: './src/views/CSysStatusView/CSysStatusView.html',
+            aHtml: htmlTemplate, //'./src/views/CSysStatusView/CSysStatusView.html',
             aRegCtrlCallBack: this.regCtrlCb,
             aLanguage: {
             language: 'cn',

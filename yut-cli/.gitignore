@@ -74,6 +74,7 @@ dkms.conf
 
 node_modules/
 dist/
+release/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -89,8 +90,4 @@ package-lock.json
 *.sln
 
 # compile files
-demo_npm/node_modules/
-demo_npm/release/
-demo_npm/package-lock.json
-yut-cli/node_modules/
-yut-cli/package-lock.json
+

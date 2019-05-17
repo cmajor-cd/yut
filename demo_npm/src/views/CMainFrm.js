@@ -11,9 +11,9 @@ import htmlTemplate from './CMainFrm.html';
 import $ from 'jquery';
 import {yutls, theApp, CView, CTest} from 'yut';
 import {appName,releaseVer} from '../version';
-import CLoginView from './CLoginView';
-import CDashboardView from './CDashboardView';
-import CSysMaintView from './CSysMaintView';
+import CLoginView from './CLoginView/CLoginView';
+import CDashboardView from './CDashboardView/CDashboardView';
+import CSysMaintView from './CSysMaintView/CSysMaintView';
 import CSysStatusView from './CSysStatusView/CSysStatusView';
 //
 class CMainFrm extends CView{ // ! inherit from CView !

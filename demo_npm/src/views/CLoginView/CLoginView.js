@@ -2,6 +2,7 @@
  * Login View的主Class定义
  */
 import htmlTemplate from './CLoginView.html';
+import './CLoginView.css';
 
 import $ from 'jquery';
 import {yutls, theApp, CView} from 'yut';

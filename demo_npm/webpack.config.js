@@ -2,7 +2,7 @@
  * 2019-05-15
  * YangYutong
  * 参考样例：打包SPA的组件
-*   https://www.jianshu.com/p/bc8c067575ba
+ *   https://www.jianshu.com/p/bc8c067575ba
 */
 
 const path = require("path");//nodejs中的基本包，处理路径的
@@ -11,6 +11,11 @@ const htmlWebpackPlugin = require('html-webpack-plugin'); //打包html的插件
 
 module.exports = {
     devtool: 'source-map', // debug tools: map error to source code
+    // devServer:{
+    //     contentBase: path.join(__dirname,"release"),
+    //     historyApiFallback: true,
+    //     inline: true
+    // },
     mode: "development", // defaut package type is development
     entry: path.join(__dirname,"src/index.js"),//__dirname代表文件所在的目录
     // entry: (readDirSync(path.join(__dirname,"src"))).js,//__dirname代表文件所在的目录

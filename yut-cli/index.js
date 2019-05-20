@@ -1,4 +1,4 @@
-#!/usr/bin/env node   //这里很重要，标记为node运行环境！
+#!/usr/bin/env node
 const packageJson = require('./package');
 const program = require('commander');
 const clone = require('git-clone');
@@ -16,10 +16,10 @@ program
   })
 
 program
-  .command('create <name>') //命令参数create;可选参数projecName
-  .alias('c') // 命令create简写
+  .command('create <name>') //'create' + option appname <name>
+  .alias('c') // 'create' can replaced by 'c'
   .description('Create template app by yut framework.')
-  .action(function (name) { //命令处理的函数
+  .action(function (name) {
     if(name){
       let pwd = shell.pwd()
       let localpath = path.join(pwd.toString(), name)

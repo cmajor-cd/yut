@@ -1,10 +1,10 @@
 {
   "name": "yut",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "description": "A light web client app js framework, that based on OOP. You can say it's writed for C++ programmer.",
   "main": "./release/yut.js",
   "scripts": {
-    "debug": "webpack --progress --colors --watch",
+    "watch": "webpack --progress --colors --watch",
     "dev": "webpack",
     "build": "webpack -p --progress"
   },

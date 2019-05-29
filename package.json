@@ -1,6 +1,6 @@
 {
   "name": "yut",
-  "version": "0.9.9",
+  "version": "1.0.0",
   "description": "A light web client app js framework, that based on OOP. You can say it's writed for C++ programmer.",
   "main": "./release/yut.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cmajor-cd/yut"
+    "url": "https://gitee.com/cmajor-cd/yut"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

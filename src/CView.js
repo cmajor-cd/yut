@@ -40,12 +40,13 @@ class CView {
         _this._childViewsArray = [];
         /*
         *  a set of all childviews OBJECT, these are used to views refresh and show/hidden opeartion.
-        *  { mounted: 0, childView: [] }
+        *  { mounted: 0, evMountedTriggered: 0, childView: [] }
         * -
         * 1. mounted => THIS view is mounted completely (all subviews are done.)
-        * 2. childView[] => the child views of THIS view.
+        * 2. evMountedTriggered => THIS view(node)'s evMounted has been triggered. 
+        * 3. childView[] => the child views of THIS view.
         */
-        _this._childViewObjsTree = { mounted: 0, childView: [] }; //{ parent: 0, mounted: 0, childView: [] };
+        _this._childViewObjsTree = { mounted: 0, evMountedTriggered: 0, childView: [] }; //{ parent: 0, mounted: 0, childView: [] };
         /**
          * event call back functions list
          * when the event is trigger, CView's event process will check and rout to the registed cb function.
@@ -275,8 +276,9 @@ class CView {
                 _this._childViewObjsTree.mounted = 1;
                 //map to regist function..
                 let ff = typeof _this._oEvCallback.evMounted;
-                if (ff == 'function') {
+                if((0 == _this._childViewObjsTree.evMountedTriggered) && (ff == 'function') ){
                     _this._oEvCallback.evMounted(_this);
+                    _this._childViewObjsTree.evMountedTriggered = 1; // set triggered flag to 1.
                 }
                 // console.warn('[ViewMounted]=> ' + _this._strViewID);
                 //d. goto THIS's parent view to check if the parent is mounted!

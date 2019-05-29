@@ -24,7 +24,7 @@ program
       let pwd = shell.pwd()
       let localpath = path.join(pwd.toString(), name)
       console.log('Constructing...');
-      clone('https://github.com/cmajor-cd/yut-template.git', localpath,null, function(){
+      clone('https://gitee.com/cmajor-cd/yut-template.git', localpath,null, function(){
         shell.rm('-rf', path.join(localpath, '.git'))
         console.log('Construction is complated!')
       })

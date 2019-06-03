@@ -1,6 +1,6 @@
 {
   "name": "yut",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A light web client app js framework, that based on OOP. You can say it's writed for C++ programmer.",
   "main": "./release/yut.js",
   "scripts": {

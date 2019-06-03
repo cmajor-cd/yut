@@ -53,7 +53,7 @@ class CView {
          */
         _this._oEvCallback = {};
         // event process
-        _this._evView = ['evMounted', 'evActived'];
+        _this._evView = ['evMounted', 'evActived', 'evDeactived'];
         _this._evFactory = new CEvent();
         for (let i = 0; i < _this._evView.length; i++) {
             let type = _this._evView[i];
@@ -63,6 +63,9 @@ class CView {
                     break;
                 case 'evActived':
                     _this._evFactory.addEvent('evActived', _this._defaultevActivedView);
+                    break;
+                case 'evDeactived':
+                    _this._evFactory.addEvent('evDeactived', _this._defaultevDeactivedView);
                     break;
                 default:
             }
@@ -305,9 +308,28 @@ class CView {
         let ff = typeof _this._oEvCallback.evActived;
         if (ff == 'function') {
             _this._oEvCallback.evActived(_this);
+        }else{
+            // console.warn(_this._strViewID + '::_this._oEvCallback.evActived is not a function!');
         }
     }
     /**
+     * event: evDeactived => THIS view is deactived to show!
+     * When view is deactived/hidded, this event will be triggered and the registed call back func is called.
+     * @param data = {
+                        type: 'evDeactived',
+                        sender: { viewID: this._strViewID, self: this}
+                        }
+    */
+   _defaultevDeactivedView(data) {
+    let _this = data.sender.self;
+    let ff = typeof _this._oEvCallback.evDeactived;
+    if (ff == 'function') {
+        _this._oEvCallback.evDeactived(_this);
+    }else{
+        // console.warn(_this._strViewID+'::_this._oEvCallback.evDeactived is not a function!');
+    }
+}
+/**
      * add event handlers into this views, in runningtime.
      * @param: evHandle = {evType: 'evActived',
      *                      evCallback: callBackFunc}
@@ -377,13 +399,13 @@ class CView {
         let cnt = arguments.length;
         if (cnt == 0) { // no arg
             console.log('CView.activeView input 0 => arg is null,means the view will active itself.');
-            //trigger evActived
-            this._evFactory.triggerEvent({
-            type: 'evActived',
-                sender: { viewID: this._strViewID, self: this }
-            });
             //show the view
             this._showView(this.node, true);
+            //trigger evActived
+            this._evFactory.triggerEvent({
+                type: 'evActived',
+                sender: { viewID: this._strViewID, self: this }
+            });
         }
         else { // input many args
             // hidde all views
@@ -395,15 +417,52 @@ class CView {
             for (let i = 0; i < arguments.length; i++) {
                 let arg = arguments[i];
                 for (let element in this._childViewObjsTree.childView) {
-                    let thisView = this._childViewObjsTree.childView[parseInt(element)];
-                    if (thisView._strViewID == arg) {
-                        //trigger evActived
-                        thisView._evFactory.triggerEvent({
-                        type: 'evActived',
-                            sender: { viewID: this._strViewID, self: thisView }
-                        });
+                    let selectedView = this._childViewObjsTree.childView[parseInt(element)];
+                    if (selectedView._strViewID == arg) {
                         //show the view
-                        this._showView(thisView.node, true);
+                        this._showView(selectedView.node, true);
+                        //trigger evActived
+                        selectedView._evFactory.triggerEvent({
+                            type: 'evActived',
+                            sender: { viewID: this._strViewID, self: selectedView }
+                        });
+                    }
+                }
+            }
+        }
+    }
+    /***
+     * deactiveView: set this view to HIDDEN by view.node
+    * usage1: xxxView.deactiveView(); => arg is null,means the view will deactive itself.
+    * usage2: xxxParentView.deactiveView('oneSubView'); => deactive only one subview
+    * usage3: xxxParentView.deactiveView('oneSubView','twoSubView'); => deactive two subviews at the same time
+     */
+    deactiveView() {
+        let cnt = arguments.length;
+        if (cnt == 0) { // no arg
+            console.log('CView.deactiveView input 0 => arg is null,means the view will deactiveView itself.');
+            // hidde the view
+            this._showView(this.node, false);
+            //trigger evDeactived
+            this._evFactory.triggerEvent({
+                type: 'evDeactived',
+                sender: { viewID: this._strViewID, self: this }
+            });
+        }
+        else { // input many args
+            // hidde the select views
+            for (let i = 0; i < arguments.length; i++) {
+                let arg = arguments[i];
+                for (let element in this._childViewObjsTree.childView) {
+                    let selectedView = this._childViewObjsTree.childView[parseInt(element)];
+                    if (selectedView._strViewID == arg) {
+                        //hidde the view
+                        this._showView(selectedView.node, false);
+                        //trigger evDeactived
+                        selectedView._evFactory.triggerEvent({
+                            type: 'evDeactived',
+                            sender: { viewID: this._strViewID, self: selectedView }
+                        });
                     }
                 }
             }

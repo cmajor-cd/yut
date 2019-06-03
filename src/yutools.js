@@ -9,34 +9,36 @@
 //
 class yutls {
     constructor() {
-        this.gDebugData = 0;
-        this.gDebugFlg = 0;
+        this.gDebugLinkData = 0;
+        // this.gDebugFlg = 0;
      }
     //-debug functions
     /**
      * set status of debug, and set the return string of debug url.
      * @param data: object of {debug:url string}.
-     * @param flg: the type of debug. 
      *  e.g. 
-     *  var data = {'noDebug':'/cgi-bin/cgi.cgi',
-     *              'mock':'./debug/mock',
-     *              'php':'./debug/action/action.test.php'};
-     *   setGlobalDebugFlg(data, 'mock');
+     *  data:{
+     *    type: 'mock',   //!!! IMPORTANT, 根据您的需求设置该值. e.g.实际量产时填写 'real'
+     *    link: {         //!!! 请将以下链接填写为自己的真实链接 !!!
+     *        'real':'/cgi-bin/cgi.cgi',
+     *        'mock':'./debug/mock',
+     *        'php':'./debug/action/action.test.php'}
+     *}
+     *   setGlobalDebugFlg(data');
      *   ...
      *   getDebugUrl(); => this line return './debug/mock'
      */
-    static setGlobalDebugFlg(data, flg){
+    static setGlobalServerLinkData(data){
         if ((data == null) || (data == undefined)) {
             this.msgBox('invalid input data!');
             return;
         }
         //
-        this.gDebugData = data;
-        this.gDebugFlg = flg;
+            this.gDebugLinkData = data;
     }
     static getDebugURL(){
-        let type = this.gDebugFlg;
-        return this.gDebugData[type];
+        let type = this.gDebugLinkData.type;
+        return this.gDebugLinkData.link[type];
     }
     //---
     static msgBox(strMsg) {
@@ -135,6 +137,32 @@ class yutls {
         }
         else {
             return "Unkown";
+        }
+    }
+    /**
+     * IP地址合法性检查
+     * return true, if it's validated.
+     */
+    static chkIpAddress(strIP){
+        var exp=/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;  
+        var rc = strIP.match(exp);  
+        if(rc == null){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    /**
+     * MAC地址合法性检查
+     * return true, if it's validated.
+     */
+    static chkMacAddress(strMac){
+        var exp=/^([A-Fa-f0-9]{2}[-,:]){5}[A-Fa-f0-9]{2}$/;  
+        var rc = strMac.match(exp);  
+        if(rc == null){
+            return false;
+        }else{
+            return true;
         }
     }
     // Nokia ajax req

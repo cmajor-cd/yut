@@ -14,3 +14,4 @@ export default yutVersion;
 // 1. [done]remove jQuery and replace loadfile() by import().
 // 2. [done]create new npm project of 'yur-cli' to create app framework by cli.
 // 3. [done]limit evMounted to 1 time by each view node.
+// 4. [done]add evDeactived event when the view is hiddened / closed

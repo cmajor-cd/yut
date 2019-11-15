@@ -165,6 +165,21 @@ class yutls {
             return true;
         }
     }
+        /**
+     * IMEI地址合法性检查
+     * IMEI规则：3位字母+5位数字
+     * return true, if it's validated.
+     */
+    static chkImeiAddress(strImei){
+        var exp=/^[A-Za-z]{3}[0-9]{5}$/;  
+        var rc = strImei.match(exp);  
+        if(rc == null){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     // Nokia ajax req
     static ajaxReq() 
     {

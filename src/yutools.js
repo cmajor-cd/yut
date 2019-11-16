@@ -5,8 +5,6 @@
  * change log:
  * 2018-12-13: change to class type with 'static' keyword, to force usage by class name. e.g. yutls.msgDebug()
  */
-// (function(window,undefined){
-//
 class yutls {
     constructor() {
         this.gDebugLinkData = 0;
@@ -82,13 +80,24 @@ class yutls {
         return map[aItem];
     }
     /**
-         * convert number to string, and fill '0' before the number.
-        */
+     * convert number to string, and fill '0' before the number.
+    */
     static getzf(num) {
         if (parseInt(num) < 10) {
             num = '0' + num;
         }
         return num;
+    }
+    /**
+     * parse string to timestamp
+     */
+    static getTimestamp(aSz){
+        // var date = '2015-03-05 17:59:00.0';
+        var date = aSz;
+        date = date.substring(0,19);    
+        date = date.replace(/-/g,'/'); 
+        var timestamp = new Date(date).getTime();
+        return timestamp;
     }
     /**
          * parse the time to yyyy-mm-dd hh:mm:ss
@@ -388,12 +397,4 @@ class yutls {
     }
 }
 
-    //
-    // if ( typeof window === "object" && typeof window.document === "object" ) {
-    //     window.yutls = yutls;
-    // }
-    export default yutls;
-// })(window);
-
-
-
+export default yutls;

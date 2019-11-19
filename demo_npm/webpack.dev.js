@@ -18,7 +18,7 @@ module.exports = merge(common, {
         port:'5008',
         inline: true,
         hot: true,
-        open: 'Chrome',
+        open: 'Chrome', //'firefox',
         // publicPath:"/release", // 重新设置 所有的 路径都要通过public路径去访问
         // historyApiFallback:{  // 然后 index 手动加上路径/public
         //     index:"/release/demo-index.html"

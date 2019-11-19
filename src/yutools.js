@@ -46,6 +46,13 @@ class yutls {
     static msgDebug(strMsg) {
         console.debug(strMsg);
     }
+    //
+    static msgBoxFailed(strMsg){
+        var msg = "";
+        msg = "Operation failed!" + strMsg;
+        console.error(strMsg);
+        alert(msg);
+    }
     // Includes a script file by writing a script tag.
     static includeJs(src) {
         document.write("<script type=\"text/javascript\" src=\"" + src + "\"></script>");

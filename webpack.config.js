@@ -4,8 +4,8 @@ let package = require('./package.json'); //import package information
 let libraryname = package.name;
 //
 module.exports = {
-    devtool: 'source-map', // debug tools: map error to source code
-    mode: "development", // defaut package type is development
+    // devtool: 'source-map', // debug tools: map error to source code
+    // mode: "development", // defaut package type is development
     entry: './index.js', // yut entry(the beginning file to package)
     output: {
         path: path.join(__dirname, 'release'), //release directory: all css/js/html will base on it.

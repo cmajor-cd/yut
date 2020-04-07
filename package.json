@@ -1,12 +1,12 @@
 {
   "name": "yut",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A light web client app js framework, that based on OOP. You can say it's writed for C++ programmer.",
   "main": "./release/yut.js",
   "scripts": {
-    "watch": "webpack --progress --colors --watch",
-    "dev": "webpack",
-    "build": "webpack -p --progress"
+    "watch": "webpack --progress --colors --watch --config webpack.dev.js",
+    "dev": "webpack --config webpack.dev.js",
+    "build": "webpack --progress --config webpack.prod.rel.js"
   },
   "keywords": [
     "yut",
@@ -27,7 +27,10 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "clean-webpack-plugin": "^2.0.2",
+    "copy-webpack-plugin": "^5.0.3",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {}
 }

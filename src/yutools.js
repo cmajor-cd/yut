@@ -107,24 +107,74 @@ class yutls {
         return timestamp;
     }
     /**
-         * parse the time to yyyy-mm-dd hh:mm:ss
-        */
-    static getDateByYMD(ms) {
+     * parse the time to yyyy-mm-dd hh:mm:ss
+    */
+    static getDateByYMDHMS(ms) {
         var timeMs = Number(parseInt(ms));
         var oDate = new Date(timeMs), oYear = oDate.getFullYear(), oMonth = oDate.getMonth() + 1, oDay = oDate.getDate(), oHour = oDate.getHours(), oMin = oDate.getMinutes(), oSen = oDate.getSeconds(), oTime = oYear + '-' + yutls.getzf(oMonth) + '-' + yutls.getzf(oDay) + ' ' + yutls.getzf(oHour) + ':' + yutls.getzf(oMin) + ':' + yutls.getzf(oSen); //最后拼接时间
         return oTime;
     }
-    /**
-         * parse the time to hh:mm:ss
-        */
-    static getDateByHMS(ms) {
+    static getDateByYMD(ms) {
         var timeMs = Number(parseInt(ms));
-        var oHour = parseInt(timeMs / (1000 * 60 * 60));
-        var oMin = parseInt((timeMs % (1000 * 60 * 60)) / (1000 * 60));
-        var oSen = parseInt((timeMs % (1000 * 60)) / 1000);
-        var oTime = yutls.getzf(oHour) + ':' + yutls.getzf(oMin) + ':' + yutls.getzf(oSen);
+        var oDate = new Date(timeMs), oYear = oDate.getFullYear(), oMonth = oDate.getMonth() + 1, oDay = oDate.getDate();
+        var oTime = oYear + '-' + this.getzf(oMonth) + '-' + this.getzf(oDay); //最后拼接时间
         return oTime;
     }
+    /**
+     * parse the time to hh:mm:ss
+    */
+    static getDateByHMS(ms) {
+        // var timeMs = Number(parseInt(ms));
+        // var oHour = parseInt(timeMs / (1000 * 60 * 60));
+        // var oMin = parseInt((timeMs % (1000 * 60 * 60)) / (1000 * 60));
+        // var oSen = parseInt((timeMs % (1000 * 60)) / 1000);
+        // var oTime = yutls.getzf(oHour) + ':' + yutls.getzf(oMin) + ':' + yutls.getzf(oSen);
+        // return oTime;
+        var timeMs = Number(parseInt(ms));
+        var oDate = new Date(timeMs), oHour = oDate.getHours(), oMin = oDate.getMinutes(), oSen = oDate.getSeconds();
+        var oTime = this.getzf(oHour) + ':' + this.getzf(oMin) + ':' + this.getzf(oSen); //最后拼接时间
+        return oTime;
+    }
+    /**
+     * convert longitude/latitude to 度分秒
+     * longitude: 'E 00°00′00"' , latitude: 'N 00°00′00"' 
+     * 经度（正：东经　负：西经）
+     * 纬度（正：北纬　负：南纬
+    */
+   static formatDegree(longitude, latitude) {
+        var longitudeD = ''; var latitudeD = '';
+        if(longitude >= 0){
+            longitudeD = 'E ';
+        }
+        else{
+            longitudeD = 'W ';
+        }
+        //
+        if(latitude >= 0){
+            latitudeD = 'N ';
+        }
+        else{
+            latitudeD = 'S ';
+        }
+        //
+        var longitudeVal = Math.abs(longitude),
+            oV1 = Math.floor(longitudeVal),//度
+            oV2 = Math.floor((longitudeVal - oV1) * 60),//分
+            oV3 = Math.round((longitudeVal - oV1) * 3600 % 60),//秒
+            longitudeStr = longitudeD + oV1 + '°' + oV2 + '\'' + oV3 + '"';
+
+        var latitudeVal = Math.abs(latitude),
+            aV1 = Math.floor(latitudeVal),//度
+            aV2 = Math.floor((latitudeVal - aV1) * 60),//分
+            aV3 = Math.round((latitudeVal - aV1) * 3600 % 60),//秒
+            latitudeStr = latitudeD + aV1 + '°' + aV2 + '\'' + aV3 + '"';
+
+        var rc = {
+            longitude: longitudeStr,
+            latitude: latitudeStr
+            };
+        return rc;
+    };
     /**
      * check browser type
     */

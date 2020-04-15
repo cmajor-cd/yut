@@ -1,1 +1,1875 @@
-!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)("object"==typeof exports?exports:e)[r]=n[r]}}(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var i=t[r]={i:r,l:!1,exports:{}};return e[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)n.d(r,i,function(t){return e[t]}.bind(null,i));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=6)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}();var i=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e);this.m_strAppName="",this.m_hMainWnd="",this.m_Store=new CStore}return r(e,null,[{key:"attachMainFrm",value:function(t){if("function"==typeof t&&null!=t&&null!=t){var n=new t(this);e.m_hMainWnd=n,n.activeView()}else console.error("theApp.attachMainFrm: invalid class name.")}},{key:"setAppName",value:function(e){null!=e&&null!=e&&(this.m_strAppName=e)}},{key:"setMainWnd",value:function(e){null!=e&&null!=e&&(this.m_hMainWnd=e)}},{key:"setStoreData",value:function(e){null!=e&&null!=e&&this.m_Store.setData(e)}},{key:"getStoreData",value:function(){return this.m_Store.getData()}},{key:"traverseAllViews",value:function(e){!function t(n){if(null==n&&null==n||"function"==typeof e&&e(n),n._childViewObjsTree.childView&&n._childViewObjsTree.childView.length>0)for(var r=0;r<n._childViewObjsTree.childView.length;r++)t(n._childViewObjsTree.childView[r])}(this.m_hMainWnd)}},{key:"whoami",value:function(){alert("THIS is theAPP")}}]),e}();t.default=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}();var i=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.gDebugLinkData=0}return r(e,null,[{key:"setGlobalServerLinkData",value:function(e){null!=e&&null!=e?this.gDebugLinkData=e:this.msgBox("invalid input data!")}},{key:"getDebugURL",value:function(){var e=this.gDebugLinkData.type;return this.gDebugLinkData.link[e]}},{key:"msgBox",value:function(e){alert(e)}},{key:"msgDebug",value:function(e){console.debug(e)}},{key:"msgBoxFailed",value:function(e){var t;t="Operation failed!"+e,console.error(e),alert(t)}},{key:"includeJs",value:function(e){document.write('<script type="text/javascript" src="'+e+'"><\/script>')}},{key:"includeCss",value:function(e){var t=document.createElement("style");t.innerHTML=' @import url("'+e+'");',document.getElementsByTagName("head")[0].appendChild(t)}},{key:"htmlSwitchLang",value:function(e){var t=e.htmlMap[e.language];for(var n in t){var r=document.getElementById(n);null==r?console.log(n):r.innerHTML=t[n]}}},{key:"jsSwitchLang",value:function(e,t){return e.jsMap[e.language][t]}},{key:"getzf",value:function(e){return parseInt(e)<10&&(e="0"+e),e}},{key:"getTimestamp",value:function(e){var t=e;return t=(t=t.substring(0,19)).replace(/-/g,"/"),new Date(t).getTime()}},{key:"getDateByYMDHMS",value:function(t){var n=Number(parseInt(t)),r=new Date(n),i=r.getFullYear(),a=r.getMonth()+1,o=r.getDate(),l=r.getHours(),s=r.getMinutes(),u=r.getSeconds();return i+"-"+e.getzf(a)+"-"+e.getzf(o)+" "+e.getzf(l)+":"+e.getzf(s)+":"+e.getzf(u)}},{key:"getDateByYMD",value:function(e){var t=Number(parseInt(e)),n=new Date(t),r=n.getFullYear(),i=n.getMonth()+1,a=n.getDate();return r+"-"+this.getzf(i)+"-"+this.getzf(a)}},{key:"getDateByHMS",value:function(e){var t=Number(parseInt(e)),n=new Date(t),r=n.getHours(),i=n.getMinutes(),a=n.getSeconds();return this.getzf(r)+":"+this.getzf(i)+":"+this.getzf(a)}},{key:"formatDegree",value:function(e,t){var n="",r="";n=e>=0?"E ":"W ",r=t>=0?"N ":"S ";var i=Math.abs(e),a=Math.floor(i),o=n+a+"°"+Math.floor(60*(i-a))+"'"+Math.round(3600*(i-a)%60)+'"',l=Math.abs(t),s=Math.floor(l);return{longitude:o,latitude:r+s+"°"+Math.floor(60*(l-s))+"'"+Math.round(3600*(l-s)%60)+'"'}}},{key:"getBrowser",value:function(){var e=window.navigator.userAgent,t=!!window.ActiveXObject||"ActiveXObject"in window,n=-1!=e.indexOf("Firefox"),r=null!=window.opr,i=e.indexOf("Chrome")&&window.chrome,a=-1!=e.indexOf("Safari")&&-1!=e.indexOf("Version");return t?"IE":n?"Firefox":r?"Opera":i?"Chrome":a?"Safari":"Unkown"}},{key:"chkIpAddress",value:function(e){return null!=e.match(/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/)}},{key:"chkMacAddress",value:function(e){return null!=e.match(/^([A-Fa-f0-9]{2}[-,:]){5}[A-Fa-f0-9]{2}$/)}},{key:"chkImeiAddress",value:function(e){return null!=e.match(/^[A-Za-z]{3}[0-9]{5}$/)}},{key:"ajaxReq",value:function(){var e=null;if(window.XMLHttpRequest&&!window.ActiveXObject)try{e=new XMLHttpRequest;try{netscape.security.PrivilegeManager.enablePrivilege&&(e._open=e.open,e.open=function(e,t,n){try{netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead"),this._open(e,t,n)}catch(r){this._open(e,t,n)}})}catch(e){}}catch(t){e=null}else if(window.ActiveXObject)try{e=new ActiveXObject("Msxml2.XMLHTTP")}catch(t){try{e=new ActiveXObject("Microsoft.XMLHTTP")}catch(e){return alert("Failed to create XmlHttprequest"),null}}return e}},{key:"ajax",value:function(t){try{var n,r,i=t.url,a=t.type.toLowerCase(),o=function(e){var t="";for(var n in e)t+=n+"="+e[n]+"&";return t.substring(0,t.length-1)}(t.data),l="application/x-www-form-urlencoded;charset=utf-8";if(void 0===t.success)throw"No ajaxParam.success()";n=t.success,r=void 0===t.error?function(e){alert(e)}:t.error;var s=e.ajaxReq()}catch(e){return void alert("XMLHttpRequest catch("+e+")")}if(s.onreadystatechange=function(){var e;if(4==s.readyState){try{e=s.status}catch(e){alert(s.status+e)}if(200==e)null!=s.responseText?n(s.responseText):null!=s.responseXML?n(s.responseXML):r("error:Response is NULL");else if(4==s.readyState&&200!=e&&0!=e){r("error: error status: "+e)}}},"get"==a){var u=i+"?"+o;s.open("GET",u,!0),s.send(null)}else"post"==a&&(s.open("post",i,!0),0!=l&&s.setRequestHeader("Content-Type",l),console.log("ajax->aParam:"+o),s.send(o))}},{key:"load",value:function(e,t,n){"function"==typeof n&&void 0!==e&&null!=e&&(e.innerHTML=t,n())}}]),e}();t.default=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}();var i=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e);this._data={},this._renderData={},this._renderData2CbMap={},this.m_bForceFresh=!1}return r(e,[{key:"regRenderData",value:function(e){if("[object Object]"!=Object.prototype.toString.call(e)&&"[object Array]"!=Object.prototype.toString.call(e))return console.error("the type of aData should be [Object or Array]!"),!1;this._observer(e)}},{key:"_observer",value:function(e){var t=this;"[object Array]"==Object.prototype.toString.call(e)&&this._overrideArrayPrototype(e,path),Object.keys(e).forEach((function(n){var r=e[n];Object.defineProperty(e,n,{get:function(){return r},set:function(e){(this.m_bForceFresh||r!=e)&&("[object Array]"==Object.prototype.toString.call(e)&&this._observer(e),this._renderCb(n,e,r),r=e)}.bind(t)}),"[object Object]"!=Object.prototype.toString.call(e[n])&&"[object Array]"!=Object.prototype.toString.call(e[n])||t._observer(e[n])}),this)}},{key:"_overrideArrayPrototype",value:function(e,t){var n,r=Array.prototype,i=Object.create(Array.prototype),a=t;ArrayAction=["push","pop","shift","unshift","short","reverse","splice"],ArrayAction.forEach((function(e){Object.defineProperty(i,e,{value:function(){var t=this.slice();return n=r[e].apply(this,arguments),a._renderCb(this,t),n}})})),e.__proto__=i}},{key:"_renderCb",value:function(e,t,n){var r=this._renderData2CbMap[e];if(null!=r){var i=document.getElementById(r);i&&(i.innerHTML=t)}else console.warn("CStore._renderCb:: invalid variant! ")}},{key:"setRenderData",value:function(e){this._renderData=e}},{key:"getRenderData",value:function(){return this._renderData}},{key:"actRenderData2CbMap",value:function(e,t,n){switch(e){case"clear":this._renderData2CbMap={};break;case"add":this._renderData2CbMap[t]=n;break;case"del":delete this._renderData2CbMap[t];break;default:console.error("CStore:: unknow action in actRenderData2CbMap! ")}}},{key:"setData",value:function(e){null!=e&&null!=e&&(this._data=e)}},{key:"getData",value:function(){return this._data}}]),e}();t.default=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}();var i=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.handlers={}}return r(e,[{key:"addEvent",value:function(e,t){void 0===this.handlers[e]&&(this.handlers[e]=[]),this.handlers[e].push(t)}},{key:"triggerEvent",value:function(e){if(e.target||(e.target=this),this.handlers[e.type]instanceof Array)for(var t=this.handlers[e.type],n=0;n<t.length;n++)t[n](e)}},{key:"removeEvHandler",value:function(e,t){if(this.handlers[e]instanceof Array){var n=this.handlers[e],r=0;for(r=0;r<n.length&&n[r]!=t;r++);n.splice(r,1)}}}]),e}();t.default=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},i=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),a=u(n(0)),o=u(n(2)),l=u(n(3)),s=u(n(1));function u(e){return e&&e.__esModule?e:{default:e}}var c=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e);this._hParent=0,this._strViewID="",this._strHtmlSrc="",this._hRegCtrlCb=0,this._oLanguage={},this._viewStore=new o.default,this._childViewsArray=[],this._childViewObjsTree={mounted:0,evMountedTriggered:0,childView:[]},this._oEvCallback={},this._evView=["evMounted","evActived","evDeactived"],this._evFactory=new l.default;for(var t=0;t<this._evView.length;t++){switch(this._evView[t]){case"evMounted":this._evFactory.addEvent("evMounted",this._defaultevViewMounted);break;case"evActived":this._evFactory.addEvent("evActived",this._defaultevActivedView);break;case"evDeactived":this._evFactory.addEvent("evDeactived",this._defaultevDeactivedView)}}}return i(e,[{key:"init",value:function(e){if(null==e||null==e||null==e.aParent||null==e.aParent||null==e.aNodeID||null==e.aNodeID)return alert("CView: option parameter is Invalid! Pls, check!"),console.error("CView: option parameter is Invalid"),void console.error(e);this._hParent=e.aParent,this._childViewObjsTree.mounted=0,this._strHtmlSrc=e.aHtml,this._hRegCtrlCb=e.aRegCtrlCallBack,this._oLanguage=e.aLanguage,null!=e.aChildViews&&(this._childViewsArray=e.aChildViews),null!=e.aRenderData&&this._viewStore.setRenderData(e.aRenderData),null!=e.aEvCallback&&(this._oEvCallback=e.aEvCallback),this._strViewID=e.aNodeID,this.node=document.getElementById(e.aNodeID),this._loadHtml()}},{key:"_loadHtml",value:function(){var e=this;null==this._strHtmlSrc||null==this._strHtmlSrc?console.error("CView._loadHtml, no html exists."):s.default.load(this.node,this._strHtmlSrc,(function(){s.default.htmlSwitchLang(e._oLanguage),e._convertVarInHtml(),e._hRegCtrlCb(),e.forceRefreshRender(),e._createChildViews()}))}},{key:"forceRefreshRender",value:function(e){var t=this,n=void 0;null!=e&&null!=e||(n=this._viewStore.getRenderData()),this._viewStore.m_bForceFresh=!0,Object.keys(n).forEach((function(e){var r=n[e];"[object Object]"!=Object.prototype.toString.call(r)&&"[object Array]"!=Object.prototype.toString.call(r)||t.forceRefreshRender(r),t._viewStore._renderData[e]=r})),this._viewStore.m_bForceFresh=!1}},{key:"_convertVarInHtml",value:function(){var e=this,t=this._strViewID;this._viewStore.actRenderData2CbMap("clear");var n=this._viewStore.getRenderData();Object.keys(n).forEach((function(n){for(var r=n,i=e.node.getElementsByTagName("a"),a=0;a<i.length;a++)if(-1!=i[a].text.indexOf("{{"+r+"}}")){var o=t+"-"+r;i[a].id=o,e._viewStore.actRenderData2CbMap("add",r,o)}})),this._viewStore.regRenderData(n)}},{key:"_createChildViews",value:function(){if(this._childViewsArray instanceof Array){var e=this._childViewsArray.length;if(0==e)this._childViewObjsTree.mounted=1,this._evFactory.triggerEvent({type:"evMounted",sender:{viewID:this._strViewID,self:this,parentHandle:this._hParent}});else{for(var t=[],n=0;n<e;n++){if("function"!=typeof this._childViewsArray[n]||null==this._childViewsArray[n]||null==this._childViewsArray[n])return void console.error("CView._createChildViews: invalid class name.");var r=new this._childViewsArray[n](this);t[n]=r}this._childViewObjsTree.childView=t}}else console.error("CView._createChildViews input parameter is invalid!")}},{key:"_defaultevViewMounted",value:function(e){!function e(t){var n=t;if(n!=a.default){var i=n._childViewObjsTree.childView,o=!0;if(null==i||null==i)n._childViewObjsTree.mounted=1;else for(var l=i.length,s=0;s<l;s++)0==i[s]._childViewObjsTree.mounted&&(o=!1);if(o){n._childViewObjsTree.mounted=1;var u=r(n._oEvCallback.evMounted);0==n._childViewObjsTree.evMountedTriggered&&"function"==u&&(n._oEvCallback.evMounted(n),n._childViewObjsTree.evMountedTriggered=1),e(n._hParent)}}else console.warn("THIS is theAPP, stop event loop")}(e.sender.self)}},{key:"_defaultevActivedView",value:function(e){var t=e.sender.self;"function"==r(t._oEvCallback.evActived)&&t._oEvCallback.evActived(t)}},{key:"_defaultevDeactivedView",value:function(e){var t=e.sender.self;"function"==r(t._oEvCallback.evDeactived)&&t._oEvCallback.evDeactived(t)}},{key:"regEvHandler",value:function(e){for(var t=!1,n=0;n<this._evView.length;n++)if(e.evType==this._evView[n]){t=!0,this._oEvCallback[e.evType]=e.evCallback;break}t||console.error("CView.regEvHandler: no evType is found("+e.evType+")")}},{key:"unRegEvHandler",value:function(e){for(var t=!1,n=0;n<this._evView.length;n++)if(e==this._evView[n]){t=!0,delete this._oEvCallback[e];break}t||console.error("CView.unRegEvHandler: no evType is found("+e+")")}},{key:"_showView",value:function(e,t){var n=e;if(null!=n){var r=n.className;null==r&&(r=""),t?r=r.replace(/ ?hidden/,""):-1==r.indexOf("hidden")&&(r.length>0&&(r+=" "),r+=" hidden"),n.className=r}}},{key:"activeView",value:function(){var e=arguments.length;if(0==e)console.log("CView.activeView input 0 => arg is null,means the view will active itself."),this._showView(this.node,!0),this._evFactory.triggerEvent({type:"evActived",sender:{viewID:this._strViewID,self:this}});else{for(var t in this._childViewObjsTree.childView)this._showView(this._childViewObjsTree.childView[parseInt(t)].node,!1);for(var n=0;n<arguments.length;n++){var r=arguments[n];for(var i in this._childViewObjsTree.childView){var a=this._childViewObjsTree.childView[parseInt(i)];a._strViewID==r&&(this._showView(a.node,!0),a._evFactory.triggerEvent({type:"evActived",sender:{viewID:this._strViewID,self:a}}))}}}}},{key:"deactiveView",value:function(){var e=arguments.length;if(0==e)console.log("CView.deactiveView input 0 => arg is null,means the view will deactiveView itself."),this._showView(this.node,!1),this._evFactory.triggerEvent({type:"evDeactived",sender:{viewID:this._strViewID,self:this}});else for(var t=0;t<arguments.length;t++){var n=arguments[t];for(var r in this._childViewObjsTree.childView){var i=this._childViewObjsTree.childView[parseInt(r)];i._strViewID==n&&(this._showView(i.node,!1),i._evFactory.triggerEvent({type:"evDeactived",sender:{viewID:this._strViewID,self:i}}))}}}}]),e}();t.default=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}();var i=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.dat="this is test!"}return r(e,[{key:"getDat",value:function(){return this.dat}}]),e}();t.default=i},function(e,t,n){"use strict";n.r(t),n.d(t,"yutVersion",(function(){return l})),n.d(t,"yutls",(function(){return o.a})),n.d(t,"theApp",(function(){return i.a})),n.d(t,"CView",(function(){return u.a})),n.d(t,"CEvent",(function(){return d.a})),n.d(t,"CStore",(function(){return v.a})),n.d(t,"CTest",(function(){return y.a}));var r=n(0),i=n.n(r),a=n(1),o=n.n(a);var l=class{constructor(){this.name="YUT framework",this.releaseVer="1.0.x"}},s=n(4),u=n.n(s),c=n(3),d=n.n(c),f=n(2),v=n.n(f),h=n(5),y=n.n(h)}])}));
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(window, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./index.js":
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
+/*! exports provided: yutVersion, yutls, theApp, CView, CEvent, CStore, CTest */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _src_yutapp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/yutapp */ "./src/yutapp.js");
+/* harmony import */ var _src_yutapp__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_src_yutapp__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "theApp", function() { return _src_yutapp__WEBPACK_IMPORTED_MODULE_0___default.a; });
+/* harmony import */ var _src_yutools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/yutools */ "./src/yutools.js");
+/* harmony import */ var _src_yutools__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_src_yutools__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "yutls", function() { return _src_yutools__WEBPACK_IMPORTED_MODULE_1___default.a; });
+/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./version */ "./version.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "yutVersion", function() { return _version__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _src_CView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/CView */ "./src/CView.js");
+/* harmony import */ var _src_CView__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_src_CView__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "CView", function() { return _src_CView__WEBPACK_IMPORTED_MODULE_3___default.a; });
+/* harmony import */ var _src_CEvent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/CEvent */ "./src/CEvent.js");
+/* harmony import */ var _src_CEvent__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_src_CEvent__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "CEvent", function() { return _src_CEvent__WEBPACK_IMPORTED_MODULE_4___default.a; });
+/* harmony import */ var _src_CStore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./src/CStore */ "./src/CStore.js");
+/* harmony import */ var _src_CStore__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_src_CStore__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "CStore", function() { return _src_CStore__WEBPACK_IMPORTED_MODULE_5___default.a; });
+/* harmony import */ var _src_CTest__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./src/CTest */ "./src/CTest.js");
+/* harmony import */ var _src_CTest__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_src_CTest__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "CTest", function() { return _src_CTest__WEBPACK_IMPORTED_MODULE_6___default.a; });
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/CEvent.js":
+/*!***********************!*\
+  !*** ./src/CEvent.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * CEvent class , for customize event.
+ * Anthor: YangYutong <70248717@qq.com>
+ * Create: 20181102
+ * Description: 
+ *  1. event don't be removed after it is triggered.
+ * Usage:
+    function myEvHanderFunc(){
+        console.log('my event is handled.');
+    }
+    function myEvHander2(data){
+        let food = data.food;
+        console.log('my event is handled:' + food);
+    }
+    //
+    var evFactory = new CEvent();
+    evFactory.addEvent('eat', myEvHanderFunc);
+    evFactory.addEvent('eat', myEvHander2);
+    evFactory.triggerEvent({
+            type: "eat"
+        });
+    evFactory.triggerEvent({
+            type: "eat",
+            food: "rice"
+        });
+
+* */
+//Class CEvent
+var CEvent = function () {
+    function CEvent() {
+        _classCallCheck(this, CEvent);
+
+        //event handler function mapping
+        // {type1: [func11, func12, ..],
+        //   type2: [func21, func22,..],
+        //  ...}
+        this.handlers = {};
+    }
+    /* regist new event and handler fucntion
+    *  @param: 
+    *      type -> event
+    *      handler -> call back
+    */
+
+
+    _createClass(CEvent, [{
+        key: 'addEvent',
+        value: function addEvent(type, handler) {
+            //1. check if this event has exist or not
+            if (typeof this.handlers[type] == 'undefined') {
+                this.handlers[type] = [];
+            }
+            //2.push new event and reg handler
+            this.handlers[type].push(handler);
+        }
+        /* trigger the event with type and other parameters are allowed to be attached
+        *  @param: 
+        *      event -> {type: myevent, others: xxx, ...}
+        */
+
+    }, {
+        key: 'triggerEvent',
+        value: function triggerEvent(event) {
+            if (!event.target) {
+                event.target = this;
+            }
+            //1. check if this event has exist and it's a array
+            if (this.handlers[event.type] instanceof Array) {
+                //2. locate the right event in mapping
+                var handlers = this.handlers[event.type];
+                //3. execute the all callback handlers
+                for (var i = 0; i < handlers.length; i++) {
+                    handlers[i](event);
+                }
+            }
+        }
+        /* remove the event handler mapping
+        *  @param: 
+        *      type -> event
+        *      handler -> call back
+        */
+
+    }, {
+        key: 'removeEvHandler',
+        value: function removeEvHandler(type, aHandler) {
+            //1. check if this event has exist and it's a array
+            if (this.handlers[type] instanceof Array) {
+                //2. locate the right event in mapping
+                var handlers = this.handlers[type];
+                //3. delete all handlers in mapping
+                var i = 0;
+                for (i = 0; i < handlers.length; i++) {
+                    if (handlers[i] == aHandler) {
+                        break;
+                    }
+                }
+                //delete from mapping
+                handlers.splice(i, 1);
+            }
+        }
+    }]);
+
+    return CEvent;
+}();
+
+exports.default = CEvent;
+// export {CEvent};
+
+/***/ }),
+
+/***/ "./src/CStore.js":
+/*!***********************!*\
+  !*** ./src/CStore.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * CStroe: Two-way binding. e.g. {varName: varValue} => <a>{{varName}}</a>
+ * Anthor: YangYutong <70248717@qq.com>
+ * Create: 20181102
+ * Description: 
+ *   refer and thanks for: https://blog.csdn.net/qq_34829112/article/details/76345928?utm_source=blogxgwz1
+ *   Provide a way to binld the var data to HTML {{}},
+ *     the data that is defined in myClass.aRenderData, that will be render to HTML {{var}}
+ * Usage:
+ * 1. define data in myClass.aRenderData.: 
+   class CMyView {
+    constructor() {
+        let option = {
+            aRenderData: {dsvFWVerVal: '0.0.1'},
+        };
+        this.init(option);
+    }
+ * 2. define the SAME name of data in HTML: 
+    <a>{{dsvFWVerVal}}</a>
+ * 3. HTML will be rendered when dsvFWVerVal is changed.
+ */
+var CStore = function () {
+    function CStore() {
+        _classCallCheck(this, CStore);
+
+        // constructor
+        var _this = this;
+        //1. internal variant / function
+        //2. exported variant / function
+        _this._data = {}; //暂时无用！考虑与_renderData合并
+        /* --
+         * the var data that will be render to HTML {{var}}
+         * {varName: varValue} => <a>{{varName}}</a>
+         */
+        _this._renderData = {};
+        /* --
+         * the var : <a> id : callback mapping
+         * {varName: {id: <a> id, cb: func}}
+         */
+        _this._renderData2CbMap = {};
+        _this.m_bForceFresh = false; // force to fresh renderData.
+    }
+    /** VARIANT OBSERVE
+     * listen the this.data, when data is changed, the callback will rend the html
+     * regist the veriant to setter observer cabll back.
+     * @param aData supput variant type and array thpe. BUT, the array type is not used in the variant/html binding!
+     */
+
+
+    _createClass(CStore, [{
+        key: 'regRenderData',
+        value: function regRenderData(aData) {
+            if (Object.prototype.toString.call(aData) != '[object Object]' && Object.prototype.toString.call(aData) != '[object Array]') {
+                console.error('the type of aData should be [Object or Array]!');
+                return false;
+            }
+            // start the observer listen
+            this._observer(aData);
+        }
+    }, {
+        key: '_observer',
+        value: function _observer(aData) {
+            var _this2 = this;
+
+            if (Object.prototype.toString.call(aData) == '[object Array]') {
+                this._overrideArrayPrototype(aData, path);
+            }
+            Object.keys(aData).forEach(function (variantName) {
+                var oldVal = aData[variantName];
+                Object.defineProperty(aData, variantName, {
+                    get: function get() {
+                        return oldVal;
+                    },
+                    set: function (newVal) {
+                        //m_bForceFresh=>refresh the variant wether it has been changed or not
+                        //this is the init view page case!
+                        if (this.m_bForceFresh || oldVal != newVal) {
+                            if (Object.prototype.toString.call(newVal) == '[object Array]') {
+                                // check sub objects
+                                this._observer(newVal);
+                            }
+                            // work on the variant
+                            this._renderCb(variantName, newVal, oldVal);
+                            oldVal = newVal;
+                        }
+                    }.bind(_this2)
+                }); // end of Object.defineProperty
+                if (Object.prototype.toString.call(aData[variantName]) == '[object Object]' || Object.prototype.toString.call(aData[variantName]) == '[object Array]') {
+                    _this2._observer(aData[variantName]);
+                }
+            }, this); // end of Object.keys
+        }
+        //--- ARRAY VARIANT OBSERVE
+
+    }, {
+        key: '_overrideArrayPrototype',
+        value: function _overrideArrayPrototype(aArrayData, owner) {
+            //1. save the original one
+            var originalPrototype = Array.prototype,
+
+            //2. create new one
+            overridePrototype = Object.create(Array.prototype),
+                _this = owner,
+                result;
+            ArrayAction = ['push', 'pop', 'shift', 'unshift', 'short', 'reverse', 'splice'];
+            ArrayAction.forEach(function (method) {
+                Object.defineProperty(overridePrototype, method, {
+                    value: function value() {
+                        var oldVal = this.slice();
+                        // call original prototype
+                        result = originalPrototype[method].apply(this, arguments);
+                        //
+                        _this._renderCb(this, oldVal);
+                        return result;
+                    }
+                });
+            });
+            // change the array data ___Proto__ to the override one
+            aArrayData.__proto__ = overridePrototype;
+        }
+        /** ---  VARIANT OBSERVE Render
+        * override Array data observe, BUT the Array is not recommended.
+        * @param variantName name of the variant
+        * @param newVal
+        * @param oldVal
+        */
+
+    }, {
+        key: '_renderCb',
+        value: function _renderCb(variantName, newVal, oldVal) {
+            var id = this._renderData2CbMap[variantName];
+            // console.log(variantName+'<>'+id);
+            if (id != undefined) {
+                var element = document.getElementById(id);
+                if (element) {
+                    element.innerHTML = newVal;
+                }
+            } else {
+                console.warn('CStore._renderCb:: invalid variant! ');
+            }
+        }
+    }, {
+        key: 'setRenderData',
+        value: function setRenderData(aData) {
+            this._renderData = aData;
+        }
+    }, {
+        key: 'getRenderData',
+        value: function getRenderData() {
+            return this._renderData;
+        }
+        /**
+         * manage a mapping table for data<=>html refresh
+         * {variantName: ID}
+         */
+
+    }, {
+        key: 'actRenderData2CbMap',
+        value: function actRenderData2CbMap(aAct, aKeyVariName, aID) {
+            //1. aOpt=> clear/add/del
+            //2. aKeyVariName:aID
+            switch (aAct) {
+                case 'clear':
+                    this._renderData2CbMap = {};
+                    break;
+                case 'add':
+                    this._renderData2CbMap[aKeyVariName] = aID;
+                    break;
+                case 'del':
+                    delete this._renderData2CbMap[aKeyVariName];
+                    break;
+                default:
+                    console.error('CStore:: unknow action in actRenderData2CbMap! ');
+            }
+            // console.log(this._renderData2CbMap);
+        }
+    }, {
+        key: 'setData',
+        value: function setData(aData) {
+            if (aData != null && aData != undefined) {
+                this._data = aData;
+            }
+        }
+    }, {
+        key: 'getData',
+        value: function getData() {
+            return this._data;
+        }
+    }]);
+
+    return CStore;
+}();
+// CStore.prototype = {
+//     constructor: CStore,
+// }
+
+exports.default = CStore;
+// export { CStore };
+
+/***/ }),
+
+/***/ "./src/CTest.js":
+/*!**********************!*\
+  !*** ./src/CTest.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var CTest = function () {
+    function CTest() {
+        _classCallCheck(this, CTest);
+
+        this.dat = 'this is test!';
+    }
+
+    _createClass(CTest, [{
+        key: 'getDat',
+        value: function getDat() {
+            return this.dat;
+        }
+    }]);
+
+    return CTest;
+}();
+
+exports.default = CTest;
+// module.exports = CTest;
+
+/***/ }),
+
+/***/ "./src/CView.js":
+/*!**********************!*\
+  !*** ./src/CView.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * CView - base class of VIEW windows.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Anthor: YangYutong <70248717@qq.com>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Create: 20181102
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Description: 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *  init the view by the html and ctrls
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * How to use: 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * A. Define child view class
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *      1. create CChildView's constructor
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *      2. fill option = {} in constructor
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *      3. call this.init() in constructor
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *      4. CChildView.prototype = new CView(); 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * B. Create OBject from class
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *      objectChildView = new CChildView(handleOfParentView);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * -----------------------------------------
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+// yutls.includeJs('./CStore.js');
+
+
+var _yutapp = __webpack_require__(/*! ./yutapp */ "./src/yutapp.js");
+
+var _yutapp2 = _interopRequireDefault(_yutapp);
+
+var _CStore = __webpack_require__(/*! ./CStore */ "./src/CStore.js");
+
+var _CStore2 = _interopRequireDefault(_CStore);
+
+var _CEvent = __webpack_require__(/*! ./CEvent */ "./src/CEvent.js");
+
+var _CEvent2 = _interopRequireDefault(_CEvent);
+
+var _yutools = __webpack_require__(/*! ./yutools */ "./src/yutools.js");
+
+var _yutools2 = _interopRequireDefault(_yutools);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var CView = function () {
+    function CView() {
+        _classCallCheck(this, CView);
+
+        // constructor
+        var _this = this;
+        //1.variant + functions
+        _this._hParent = 0; // parent handle of THIS view.
+        _this._strViewID = '';
+        _this._strHtmlSrc = '';
+        _this._hRegCtrlCb = 0;
+        _this._oLanguage = {};
+        //2. init the objects
+        _this._viewStore = new _CStore2.default();
+        /*
+        *  a set of all childviews NAME, these are used to create the childview objects
+        *  [COneView, CTwoView,...]
+        *  - used to create all child subviews by the class NAMR, one by one.
+        */
+        _this._childViewsArray = [];
+        /*
+        *  a set of all childviews OBJECT, these are used to views refresh and show/hidden opeartion.
+        *  { mounted: 0, evMountedTriggered: 0, childView: [] }
+        * -
+        * 1. mounted => THIS view is mounted completely (all subviews are done.)
+        * 2. evMountedTriggered => THIS view(node)'s evMounted has been triggered. 
+        * 3. childView[] => the child views of THIS view.
+        */
+        _this._childViewObjsTree = { mounted: 0, evMountedTriggered: 0, childView: [] }; //{ parent: 0, mounted: 0, childView: [] };
+        /**
+         * event call back functions list
+         * when the event is trigger, CView's event process will check and rout to the registed cb function.
+         */
+        _this._oEvCallback = {};
+        // event process
+        _this._evView = ['evMounted', 'evActived', 'evDeactived'];
+        _this._evFactory = new _CEvent2.default();
+        for (var i = 0; i < _this._evView.length; i++) {
+            var type = _this._evView[i];
+            switch (type) {
+                case 'evMounted':
+                    _this._evFactory.addEvent('evMounted', _this._defaultevViewMounted);
+                    break;
+                case 'evActived':
+                    _this._evFactory.addEvent('evActived', _this._defaultevActivedView);
+                    break;
+                case 'evDeactived':
+                    _this._evFactory.addEvent('evDeactived', _this._defaultevDeactivedView);
+                    break;
+                default:
+            }
+        }
+    }
+    /**
+     * init after New object.
+     * @param option = {
+     *          aParent: [Peremptory]  // parent view's this pointer
+     *          aNodeID: [Peremptory]  //dom node id
+     *          aHtml:   [Optional]    //html source file string
+     *          aRegCtrlCallBack: [Optional] //call back function for ctrl
+     *          aLanguage:  [Optional] // multi language option
+     *              { language: 'cn',
+     *                  htmlMap: {'cn': _this.cnHtmlMap{..} ,'en': _this.enHtmlMap{..},..},
+     *                  jsMap: {'cn': _this.cnJsMap{..},'en': _this.enJsMap{..},..} }
+     *          aChildViews: [Optional] // array of chile views
+     *          aRenderData：[Optional] // variant list for HTML render
+     *          aEvCallback: [Optional] // call back functions for event
+     *              {enType1: cbFunc1, ... }
+     *         }
+     */
+
+
+    _createClass(CView, [{
+        key: 'init',
+        value: function init(option) {
+            if (option == null || option == undefined || option.aParent == null || option.aParent == undefined || option.aNodeID == null || option.aNodeID == undefined
+            // ||(aHtml == null)||(aHtml == undefined)
+            // ||(aRegCtrlCallBack == null)||(aRegCtrlCallBack == undefined)
+            // ||(aLanguage == null)||(aLanguage == undefined)
+            ) {
+                    alert('CView: option parameter is Invalid! Pls, check!');
+                    console.error('CView: option parameter is Invalid');
+                    console.error(option);
+                    return;
+                }
+            //1.variant + functions
+            this._hParent = option.aParent;
+            //this._childViewObjsTree.parent = this._hParent;
+            this._childViewObjsTree.mounted = 0;
+            this._strHtmlSrc = option.aHtml;
+            this._hRegCtrlCb = option.aRegCtrlCallBack;
+            this._oLanguage = option.aLanguage;
+            if (option.aChildViews != undefined) this._childViewsArray = option.aChildViews;
+            if (option.aRenderData != undefined) this._viewStore.setRenderData(option.aRenderData);
+            if (option.aEvCallback != undefined) this._oEvCallback = option.aEvCallback;
+            //2. init the objects
+            this._strViewID = option.aNodeID;
+            this.node = document.getElementById(option.aNodeID);
+            //this.jqNode = $('#' + option.aNodeID); // jQuery node object
+            // 1. load view'html 2.multi language 3.regiest ctrls
+            this._loadHtml();
+        }
+        //----- Load the html src of this view
+        //1. load the html source
+        //2. multi language
+        //3. convert {{var}} by add new id into the <a>
+        //4. regiest the dom call back
+
+    }, {
+        key: '_loadHtml',
+        value: function _loadHtml() {
+            var _this2 = this;
+
+            if (this._strHtmlSrc == null || this._strHtmlSrc == undefined) {
+                //if this view no html, do nothing.
+                console.error('CView._loadHtml, no html exists.');
+            } else {
+                // 2019-05-15: remove ajax function, replace by ES6 import
+                // this.jqNode.load(this._strHtmlSrc, () => {
+                _yutools2.default.load(this.node, this._strHtmlSrc, function () {
+                    //console.log('CView._loadHtml::'+this._strHtmlSrc);
+                    _yutools2.default.htmlSwitchLang(_this2._oLanguage);
+                    // add new id for every <a>
+                    _this2._convertVarInHtml();
+                    // regist the DOM callback functions
+                    _this2._hRegCtrlCb();
+                    // force refresh my view
+                    _this2.forceRefreshRender();
+                    // create subviews
+                    _this2._createChildViews();
+                });
+            }
+        }
+        //--- force to refresh the variant whether it has been changed or not
+        // this will disable CStore._observer(){ ... if(oldVal != newVal)...}
+        // after refreshing it'll enable CStore._observer(){ ... if(oldVal != newVal)...}
+
+    }, {
+        key: 'forceRefreshRender',
+        value: function forceRefreshRender(aData) {
+            var _this3 = this;
+
+            var data = void 0;
+            if (aData == null || aData == undefined) {
+                data = this._viewStore.getRenderData();
+            }
+            this._viewStore.m_bForceFresh = true;
+            Object.keys(data).forEach(function (key) {
+                var val = data[key];
+                if (Object.prototype.toString.call(val) == '[object Object]' || Object.prototype.toString.call(val) == '[object Array]') {
+                    _this3.forceRefreshRender(val);
+                }
+                // !force setter refresh!
+                _this3._viewStore._renderData[key] = val;
+            });
+            this._viewStore.m_bForceFresh = false;
+        }
+        //----- Search the {{variantname}} in html-<a> node,then add a id for the <a> 
+        //1. variants are located in <a> and marked by {{variantname}},
+        //2. variants are reg into CStore::_viewStore._renderData => {varName: varValue},
+        //3. find {{variantname}} in html-<a> nodes,then make a new id to this <a> //newID = viewName +'-'+ variantName;
+        //4. regiest the variants:newID into CStore::_viewStore._renderData2CbMap => {varName: newID},
+
+    }, {
+        key: '_convertVarInHtml',
+        value: function _convertVarInHtml() {
+            var _this4 = this;
+
+            // console.log('CView._convertVarInHtml->viewname:'+this._strViewID);
+            var viewName = this._strViewID;
+            this._viewStore.actRenderData2CbMap('clear');
+            var data = this._viewStore.getRenderData();
+            Object.keys(data).forEach(function (key) {
+                var variantName = key;
+                // let aArray = this.jqNode.find('a');
+                var aArray = _this4.node.getElementsByTagName("a");
+                for (var i = 0; i < aArray.length; i++) {
+                    if (aArray[i].text.indexOf('{{' + variantName + '}}') != -1) {
+                        //为每个变量的<a>生成唯一ID，为以后刷新value的回调函数做准备
+                        var newID = viewName + '-' + variantName;
+                        // console.log(newID);
+                        // $(aArray[i]).prop('id', newID);
+                        aArray[i].id = newID;
+                        _this4._viewStore.actRenderData2CbMap('add', variantName, newID);
+                    }
+                }
+            });
+            // regist setter call back
+            this._viewStore.regRenderData(data);
+        }
+        /**
+         * create the child views by the views array (with class name)
+         * @param: aClassName is NOT string, it's the defination name of Class. e.g. CDashboardView.
+         * @param: sender: { viewID: this._strViewID, self: this, parentHandle: this._hParent}
+         */
+
+    }, {
+        key: '_createChildViews',
+        value: function _createChildViews() {
+            var _this = this;
+            if (_this._childViewsArray instanceof Array) {
+                var numViews = _this._childViewsArray.length;
+                //console.log(numViews);
+                if (numViews == 0) {
+                    // no subviews, means THIS view has been mounted.
+                    _this._childViewObjsTree.mounted = 1;
+                    _this._evFactory.triggerEvent({
+                        type: 'evMounted',
+                        sender: { viewID: _this._strViewID, self: _this, parentHandle: _this._hParent }
+                    });
+                } else {
+                    var childObjs = [];
+                    for (var i = 0; i < numViews; i++) {
+                        if (typeof _this._childViewsArray[i] != 'function' || _this._childViewsArray[i] == null || _this._childViewsArray[i] == undefined) {
+                            console.error('CView._createChildViews: invalid class name.');
+                            return;
+                        }
+                        var obj = new _this._childViewsArray[i](_this);
+                        // let viewid = obj._strViewID;
+                        childObjs[i] = obj; //{ viewID: viewid, object: obj, mounted: 0};
+                    }
+                    _this._childViewObjsTree.childView = childObjs;
+                    // console.log(this._childViewObjsTree);//(this._childViewObjsTree);
+                }
+            } else {
+                console.error('CView._createChildViews input parameter is invalid!');
+            }
+        }
+        /**
+         * event: evMounted => THIS view is mounted!
+         * This event is opened to class ojects, can be routed to the registed call back func.
+         * @param data = {
+                            type: 'evMounted',
+                            sender: { viewID: this._strViewID, self: this, parentHandle: this._hParent}
+                            }
+            ---
+            1. when subview's childview is NULL, it trigger event(evMounted) to its parent view.
+            2. parent view check it's _childViewObjsTree, if all subviews are compelted.
+            3. if all subviews are completed mount, THIS view will trigger callback function if it has been registed.
+            4. event(evMounted) will be ended if THIS view handle == theAPP.
+        */
+
+    }, {
+        key: '_defaultevViewMounted',
+        value: function _defaultevViewMounted(data) {
+            /** internal function
+             * traverse the view tree to check whether this view has been mounted (all subviews are mounted)
+             * @param INPUT: aThisView => the handle of THIS view.
+             * @param OUTPUT:
+             */
+            function traverseViewTree(aThisView) {
+                var _this = aThisView;
+                if (_this == _yutapp2.default) {
+                    // THIS is theAPP, stop event loop
+                    console.warn('THIS is theAPP, stop event loop');
+                    return;
+                }
+                //
+                var subviews = _this._childViewObjsTree.childView;
+                var allSubviewsMounted = true;
+                if (subviews == null || subviews == undefined) {
+                    //a. this view hasn't subviews
+                    _this._childViewObjsTree.mounted = 1;
+                } else {
+                    //b. this view has some subviews
+                    var subViewCnt = subviews.length;
+                    for (var i = 0; i < subViewCnt; i++) {
+                        if (subviews[i]._childViewObjsTree.mounted == 0) {
+                            allSubviewsMounted = false;
+                        }
+                    }
+                }
+                // c. check, if all subviews are mounted?
+                if (allSubviewsMounted) {
+                    // all subviews are mounted
+                    _this._childViewObjsTree.mounted = 1;
+                    //map to regist function..
+                    var ff = _typeof(_this._oEvCallback.evMounted);
+                    if (0 == _this._childViewObjsTree.evMountedTriggered && ff == 'function') {
+                        _this._oEvCallback.evMounted(_this);
+                        _this._childViewObjsTree.evMountedTriggered = 1; // set triggered flag to 1.
+                    }
+                    // console.warn('[ViewMounted]=> ' + _this._strViewID);
+                    //d. goto THIS's parent view to check if the parent is mounted!
+                    traverseViewTree(_this._hParent);
+                }
+            }
+            /** -----------------
+             * process the view mount event
+             * sender: { viewID: this._strViewID, self: this, parentHandle: this._hParent}
+             */
+            var _this = data.sender.self;
+            traverseViewTree(_this);
+        }
+        /**
+         * event: evActived => THIS view is Actived to show!
+         * When view is actived to show, this event will be triggered and the registed call back func is called.
+         * @param data = {
+                            type: 'evActived',
+                            sender: { viewID: this._strViewID, self: this}
+                            }
+        */
+
+    }, {
+        key: '_defaultevActivedView',
+        value: function _defaultevActivedView(data) {
+            var _this = data.sender.self;
+            var ff = _typeof(_this._oEvCallback.evActived);
+            if (ff == 'function') {
+                _this._oEvCallback.evActived(_this);
+            } else {
+                // console.warn(_this._strViewID + '::_this._oEvCallback.evActived is not a function!');
+            }
+        }
+        /**
+         * event: evDeactived => THIS view is deactived to show!
+         * When view is deactived/hidded, this event will be triggered and the registed call back func is called.
+         * @param data = {
+                            type: 'evDeactived',
+                            sender: { viewID: this._strViewID, self: this}
+                            }
+        */
+
+    }, {
+        key: '_defaultevDeactivedView',
+        value: function _defaultevDeactivedView(data) {
+            var _this = data.sender.self;
+            var ff = _typeof(_this._oEvCallback.evDeactived);
+            if (ff == 'function') {
+                _this._oEvCallback.evDeactived(_this);
+            } else {
+                // console.warn(_this._strViewID+'::_this._oEvCallback.evDeactived is not a function!');
+            }
+        }
+        /**
+             * add event handlers into this views, in runningtime.
+             * @param: evHandle = {evType: 'evActived',
+             *                      evCallback: callBackFunc}
+             */
+
+    }, {
+        key: 'regEvHandler',
+        value: function regEvHandler(evHandler) {
+            // check if the event type is ok
+            var flag = false;
+            for (var i = 0; i < this._evView.length; i++) {
+                if (evHandler.evType == this._evView[i]) {
+                    flag = true;
+                    this._oEvCallback[evHandler.evType] = evHandler.evCallback;
+                    break;
+                }
+            }
+            if (!flag) {
+                console.error('CView.regEvHandler: no evType is found(' + evHandler.evType + ")");
+            }
+        }
+        /**
+         * delete event handlers from this views, in runningtime.
+         * @param: evType: 'evActived'
+         */
+
+    }, {
+        key: 'unRegEvHandler',
+        value: function unRegEvHandler(evType) {
+            // check if the event type is ok
+            var flag = false;
+            for (var i = 0; i < this._evView.length; i++) {
+                if (evType == this._evView[i]) {
+                    flag = true;
+                    delete this._oEvCallback[evType];
+                    break;
+                }
+            }
+            if (!flag) {
+                console.error('CView.unRegEvHandler: no evType is found(' + evType + ")");
+            }
+        }
+        /**
+         * --- show one view by dom-id
+         */
+
+    }, {
+        key: '_showView',
+        value: function _showView(aViewNode, visible) {
+            var element = aViewNode;
+            if (element == null) {
+                return;
+            }
+            var className = element.className;
+            if (className == null) {
+                className = "";
+            }
+            if (visible) {
+                className = className.replace(/ ?hidden/, "");
+            } else {
+                if (className.indexOf("hidden") == -1) {
+                    if (className.length > 0) className += " ";
+                    className += " hidden";
+                }
+            }
+            element.className = className;
+        }
+        /*--- show one or multi subview in a view contains
+        * usage1: xxxView.activeView(); => arg is null,means the view will active itself.
+        * usage2: xxxParentView.activeView('oneSubView'); => show only one subview
+        * usage3: xxxParentView.activeView('oneSubView','twoSubView'); => show two subviews at the same time
+        */
+
+    }, {
+        key: 'activeView',
+        value: function activeView() {
+            var cnt = arguments.length;
+            if (cnt == 0) {
+                // no arg
+                console.log('CView.activeView input 0 => arg is null,means the view will active itself.');
+                //show the view
+                this._showView(this.node, true);
+                //trigger evActived
+                this._evFactory.triggerEvent({
+                    type: 'evActived',
+                    sender: { viewID: this._strViewID, self: this }
+                });
+            } else {
+                // input many args
+                // hidde all views
+                for (var element in this._childViewObjsTree.childView) {
+                    // let element = this._childViewObjsTree.childView[parseInt(i)];
+                    this._showView(this._childViewObjsTree.childView[parseInt(element)].node, false);
+                }
+                // show the select views
+                for (var i = 0; i < arguments.length; i++) {
+                    var arg = arguments[i];
+                    for (var _element in this._childViewObjsTree.childView) {
+                        var selectedView = this._childViewObjsTree.childView[parseInt(_element)];
+                        if (selectedView._strViewID == arg) {
+                            //show the view
+                            this._showView(selectedView.node, true);
+                            //trigger evActived
+                            selectedView._evFactory.triggerEvent({
+                                type: 'evActived',
+                                sender: { viewID: this._strViewID, self: selectedView }
+                            });
+                        }
+                    }
+                }
+            }
+        }
+        /***
+         * deactiveView: set this view to HIDDEN by view.node
+        * usage1: xxxView.deactiveView(); => arg is null,means the view will deactive itself.
+        * usage2: xxxParentView.deactiveView('oneSubView'); => deactive only one subview
+        * usage3: xxxParentView.deactiveView('oneSubView','twoSubView'); => deactive two subviews at the same time
+         */
+
+    }, {
+        key: 'deactiveView',
+        value: function deactiveView() {
+            var cnt = arguments.length;
+            if (cnt == 0) {
+                // no arg
+                console.log('CView.deactiveView input 0 => arg is null,means the view will deactiveView itself.');
+                // hidde the view
+                this._showView(this.node, false);
+                //trigger evDeactived
+                this._evFactory.triggerEvent({
+                    type: 'evDeactived',
+                    sender: { viewID: this._strViewID, self: this }
+                });
+            } else {
+                // input many args
+                // hidde the select views
+                for (var i = 0; i < arguments.length; i++) {
+                    var arg = arguments[i];
+                    for (var element in this._childViewObjsTree.childView) {
+                        var selectedView = this._childViewObjsTree.childView[parseInt(element)];
+                        if (selectedView._strViewID == arg) {
+                            //hidde the view
+                            this._showView(selectedView.node, false);
+                            //trigger evDeactived
+                            selectedView._evFactory.triggerEvent({
+                                type: 'evDeactived',
+                                sender: { viewID: this._strViewID, self: selectedView }
+                            });
+                        }
+                    }
+                }
+            }
+        }
+        /**
+         * getNodeObjByChildViewID: get my CHILD view's node object by view_id
+         * @param cbFunc the call back function, that inputed by caller.
+         * @param viewNodeId the nodeid of the view what you want to fine, //option.aNodeID
+         * This function find the node object  of mine subviews. 
+        */
+
+    }, {
+        key: 'getNodeObjByChildViewID',
+        value: function getNodeObjByChildViewID(viewNodeId, cbFunc) {
+            if (viewNodeId == undefined || viewNodeId == null || '' == viewNodeId || typeof cbFunc != 'function') {
+                console.warn(_yutools2.default.gMsgWarning + 'input parameters are incorrect!');
+                return;
+            }
+            //
+            if (this._childViewObjsTree.childView && this._childViewObjsTree.childView.length > 0) {
+                for (var i = 0; i < this._childViewObjsTree.childView.length; i++) {
+                    _node = this._childViewObjsTree.childView[i];
+                    if (viewNodeId == _node._strViewID && typeof cbFunc == 'function') {
+                        cbFunc(node); // find the special view bode, callback, then return.
+                        return;
+                    }
+                }
+            }
+        }
+    }]);
+
+    return CView;
+}();
+// CView.prototype = {
+//     constructor: CView, // fix constructor
+// }
+
+exports.default = CView;
+
+/***/ }),
+
+/***/ "./src/yutapp.js":
+/*!***********************!*\
+  !*** ./src/yutapp.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * yut main entry.
+ * Anthor: YangYutong
+ * Create: 20181102
+ * Description: 
+ * 1. it's the Main Application Class, all other windows classes are attaced to this class.
+ * 2. It's a self runnning class, the object[yut] or [theApp] will be created after the script is included by user
+ * 3. key Global members:
+ *    3.1. theApp/yut: this pointer of the class object.
+ *    3.2. m_strAppName: special name of theApp
+ *    3.3. m_hMainWnd: main frame handle of the MainFrm Class.
+ *    3.4. m_Store: data store of this app.
+ * Usage: 
+ * 1. add Init() into <body> => <body id="mainFrm" onload="Init()">
+ * 2. attache MainFrm class to theAPP => theApp.attachMainFrm(CMainFrm);
+ * -----------------
+ * change log:
+ * 2018-12-13: change to class type with 'static' keyword, to force usage by class name. e.g. theApp.setAppName('myApp')
+ */
+// include the tools lib
+// document.write('<script type="text/javascript" src="./src/yutools.js"></script>');
+// yutls.includeJs('./CEvent.js');
+// yutls.includeJs('./CStore.js');
+// yutls.includeJs('./CView.js');
+
+//code
+// (function(window,undefined){
+var theApp = function () {
+    function theApp() {
+        _classCallCheck(this, theApp);
+
+        // 构造函数
+        var _this = this;
+        //1.内部变量+内部函数
+        //2.外部成员
+        // _this._strViewID = 'theAPP';
+        _this.m_strAppName = '';
+        _this.m_hMainWnd = '';
+        _this.m_Store = new CStore();
+    }
+    /**
+     * create a mainfrm for this application
+     * @param aClassName the name of class. e.g. CMainFrm.
+     */
+
+
+    _createClass(theApp, null, [{
+        key: 'attachMainFrm',
+        value: function attachMainFrm(aClassName) {
+            if (typeof aClassName != 'function' || aClassName == null || aClassName == undefined) {
+                console.error('theApp.attachMainFrm: invalid class name.');
+                return;
+            }
+            var oMainFrm = new aClassName(this);
+            theApp.m_hMainWnd = oMainFrm;
+            oMainFrm.activeView(); // avtive itself, this line is used to trigger mainFrm's evActived.
+        }
+    }, {
+        key: 'setAppName',
+        value: function setAppName(aAppName) {
+            if (aAppName != null && aAppName != undefined) {
+                this.m_strAppName = aAppName;
+            }
+        }
+    }, {
+        key: 'setMainWnd',
+        value: function setMainWnd(aWnd) {
+            if (aWnd != null && aWnd != undefined) {
+                this.m_hMainWnd = aWnd;
+            }
+        }
+    }, {
+        key: 'setStoreData',
+        value: function setStoreData(aData) {
+            if (aData != null && aData != undefined) {
+                this.m_Store.setData(aData);
+            }
+        }
+    }, {
+        key: 'getStoreData',
+        value: function getStoreData() {
+            return this.m_Store.getData();
+        }
+        /** ---
+             * THIS function provide tranverse all views in this APP, caller
+             * can do his special operation by input call back fucntion.
+             * THIS will input object handle of the views into callbakc func.
+             *
+             * @param cbFunc the call back function, that inputed by caller.
+             */
+
+    }, {
+        key: 'traverseAllViews',
+        value: function traverseAllViews(cbFunc) {
+            /**
+             * traverseNode, and exec _loadHtml() to render all views
+             */
+            function traverseNode(node) {
+                if (node != undefined || node != null) {
+                    if (typeof cbFunc == 'function') {
+                        cbFunc(node);
+                    }
+                }
+                if (node._childViewObjsTree.childView && node._childViewObjsTree.childView.length > 0) {
+                    for (var i = 0; i < node._childViewObjsTree.childView.length; i++) {
+                        traverseNode(node._childViewObjsTree.childView[i]);
+                    }
+                }
+            }
+            /** ----------
+             * DO traverseNode operation...
+             */
+            traverseNode(this.m_hMainWnd);
+        }
+        /** ---
+         * get the node of the input view.
+         *
+         * @param cbFunc the call back function, that inputed by caller.
+         * @param viewNodeId the nodeid of the view(=>class.option.aNodeID) what you want to find.
+         * the nodeObject will be put into the cbFunc(node)
+         */
+
+    }, {
+        key: 'getNodeObjByViewID',
+        value: function getNodeObjByViewID(viewNodeId, cbFunc) {
+            /**
+             * traverseNode, and exec _loadHtml() to render all views
+             */
+            function traverseNode(node) {
+                if (node != undefined || node != null) {
+                    if ('' == viewNodeId && typeof cbFunc == 'function') {
+                        cbFunc(node); // if no special view need to search, callback each view object.
+                    } else if (viewNodeId == node._strViewID && typeof cbFunc == 'function') {
+                        cbFunc(node); // find the special view bode, callback, then return.
+                        return;
+                    }
+                }
+                if (node._childViewObjsTree.childView && node._childViewObjsTree.childView.length > 0) {
+                    for (var i = 0; i < node._childViewObjsTree.childView.length; i++) {
+                        traverseNode(node._childViewObjsTree.childView[i]);
+                    }
+                }
+            }
+            /** ----------
+             * DO traverseNode operation...
+             */
+            traverseNode(this.m_hMainWnd);
+        }
+        // theApp.test = function(cb){
+        //     let type = typeof cb;
+        //     let pa = 12;
+        //     cb(pa);
+        // }
+        //
+
+    }, {
+        key: 'whoami',
+        value: function whoami() {
+            alert("THIS is theAPP");
+        }
+    }]);
+
+    return theApp;
+}();
+//
+// if ( typeof window === "object" && typeof window.document === "object" ) {
+//     window.theApp = window.yut = theApp//window.$;
+// }
+//
+
+
+exports.default = theApp;
+// })(window);
+
+/***/ }),
+
+/***/ "./src/yutools.js":
+/*!************************!*\
+  !*** ./src/yutools.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tools set for yutls
+ * Anthor: YangYutong
+ * Create: 2018-4-12
+ * change log:
+ * 2018-12-13: change to class type with 'static' keyword, to force usage by class name. e.g. yutls.msgDebug()
+ */
+var yutls = function () {
+    function yutls() {
+        _classCallCheck(this, yutls);
+
+        this.gDebugLinkData = 0;
+        // this.gDebugFlg = 0;
+        this.gMsgWarning = 'yut warning: ';
+    }
+    //-debug functions
+    /**
+     * set status of debug, and set the return string of debug url.
+     * @param data: object of {debug:url string}.
+     *  e.g. 
+     *  data:{
+     *    type: 'mock',   //!!! IMPORTANT, 根据您的需求设置该值. e.g.实际量产时填写 'real'
+     *    link: {         //!!! 请将以下链接填写为自己的真实链接 !!!
+     *        'real':'/cgi-bin/cgi.cgi',
+     *        'mock':'./debug/mock',
+     *        'php':'./debug/action/action.test.php'}
+     *}
+     *   setGlobalDebugFlg(data');
+     *   ...
+     *   getDebugUrl(); => this line return './debug/mock'
+     */
+
+
+    _createClass(yutls, null, [{
+        key: 'setGlobalServerLinkData',
+        value: function setGlobalServerLinkData(data) {
+            if (data == null || data == undefined) {
+                this.msgBox('invalid input data!');
+                return;
+            }
+            //
+            this.gDebugLinkData = data;
+        }
+    }, {
+        key: 'getDebugURL',
+        value: function getDebugURL() {
+            var type = this.gDebugLinkData.type;
+            return this.gDebugLinkData.link[type];
+        }
+        //---
+
+    }, {
+        key: 'msgBox',
+        value: function msgBox(strMsg) {
+            alert(strMsg);
+        }
+        //
+
+    }, {
+        key: 'msgDebug',
+        value: function msgDebug(strMsg) {
+            console.debug(strMsg);
+        }
+        //
+
+    }, {
+        key: 'msgBoxFailed',
+        value: function msgBoxFailed(strMsg) {
+            var msg = "";
+            msg = "Operation failed!" + strMsg;
+            console.error(strMsg);
+            alert(msg);
+        }
+        // Includes a script file by writing a script tag.
+
+    }, {
+        key: 'includeJs',
+        value: function includeJs(src) {
+            document.write("<script type=\"text/javascript\" src=\"" + src + "\"></script>");
+        }
+        // Includes a style sheet by writing a style tag.
+
+    }, {
+        key: 'includeCss',
+        value: function includeCss(src) {
+            // document.write("<style type=\"text/css\"> @import url(\"" +  src + "\"); </style>");
+            var _style = document.createElement('style');
+            _style.innerHTML = ' @import url(\"' + src + '\");';
+            document.getElementsByTagName('head')[0].appendChild(_style);
+            // console.log(_style.innerHTML);
+        }
+        /* -- Localizing: multi-language ---
+            * aLanguage: { language: 'cn',
+            *               htmlMap: {'cn': cnHtmlMap ,'en': enHtmlMap,},
+            *               jsMap: {'cn': cnJsMap ,'en': enJsMap,} },
+            */
+
+    }, {
+        key: 'htmlSwitchLang',
+        value: function htmlSwitchLang(aOption) {
+            var map = aOption.htmlMap[aOption.language];
+            for (var name in map) {
+                var element = document.getElementById(name);
+                if (null == element) {
+                    console.log(name);
+                } else {
+                    element.innerHTML = map[name];
+                }
+            }
+        }
+    }, {
+        key: 'jsSwitchLang',
+        value: function jsSwitchLang(aOption, aItem) {
+            var map = aOption.jsMap[aOption.language];
+            return map[aItem];
+        }
+        /**
+         * convert number to string, and fill '0' before the number.
+        */
+
+    }, {
+        key: 'getzf',
+        value: function getzf(num) {
+            if (parseInt(num) < 10) {
+                num = '0' + num;
+            }
+            return num;
+        }
+        /**
+         * parse string to timestamp
+         */
+
+    }, {
+        key: 'getTimestamp',
+        value: function getTimestamp(aSz) {
+            // var date = '2015-03-05 17:59:00.0';
+            var date = aSz;
+            date = date.substring(0, 19);
+            date = date.replace(/-/g, '/');
+            var timestamp = new Date(date).getTime();
+            return timestamp;
+        }
+        /**
+         * parse the time to yyyy-mm-dd hh:mm:ss
+        */
+
+    }, {
+        key: 'getDateByYMDHMS',
+        value: function getDateByYMDHMS(ms) {
+            var timeMs = Number(parseInt(ms));
+            var oDate = new Date(timeMs),
+                oYear = oDate.getFullYear(),
+                oMonth = oDate.getMonth() + 1,
+                oDay = oDate.getDate(),
+                oHour = oDate.getHours(),
+                oMin = oDate.getMinutes(),
+                oSen = oDate.getSeconds(),
+                oTime = oYear + '-' + yutls.getzf(oMonth) + '-' + yutls.getzf(oDay) + ' ' + yutls.getzf(oHour) + ':' + yutls.getzf(oMin) + ':' + yutls.getzf(oSen); //最后拼接时间
+            return oTime;
+        }
+    }, {
+        key: 'getDateByYMD',
+        value: function getDateByYMD(ms) {
+            var timeMs = Number(parseInt(ms));
+            var oDate = new Date(timeMs),
+                oYear = oDate.getFullYear(),
+                oMonth = oDate.getMonth() + 1,
+                oDay = oDate.getDate();
+            var oTime = oYear + '-' + this.getzf(oMonth) + '-' + this.getzf(oDay); //最后拼接时间
+            return oTime;
+        }
+        /**
+         * parse the time to hh:mm:ss
+        */
+
+    }, {
+        key: 'getDateByHMS',
+        value: function getDateByHMS(ms) {
+            // var timeMs = Number(parseInt(ms));
+            // var oHour = parseInt(timeMs / (1000 * 60 * 60));
+            // var oMin = parseInt((timeMs % (1000 * 60 * 60)) / (1000 * 60));
+            // var oSen = parseInt((timeMs % (1000 * 60)) / 1000);
+            // var oTime = yutls.getzf(oHour) + ':' + yutls.getzf(oMin) + ':' + yutls.getzf(oSen);
+            // return oTime;
+            var timeMs = Number(parseInt(ms));
+            var oDate = new Date(timeMs),
+                oHour = oDate.getHours(),
+                oMin = oDate.getMinutes(),
+                oSen = oDate.getSeconds();
+            var oTime = this.getzf(oHour) + ':' + this.getzf(oMin) + ':' + this.getzf(oSen); //最后拼接时间
+            return oTime;
+        }
+        /**
+         * convert longitude/latitude to 度分秒
+         * longitude: 'E 00°00′00"' , latitude: 'N 00°00′00"' 
+         * 经度（正：东经　负：西经）
+         * 纬度（正：北纬　负：南纬
+        */
+
+    }, {
+        key: 'formatDegree',
+        value: function formatDegree(longitude, latitude) {
+            var longitudeD = '';var latitudeD = '';
+            if (longitude >= 0) {
+                longitudeD = 'E ';
+            } else {
+                longitudeD = 'W ';
+            }
+            //
+            if (latitude >= 0) {
+                latitudeD = 'N ';
+            } else {
+                latitudeD = 'S ';
+            }
+            //
+            var longitudeVal = Math.abs(longitude),
+                oV1 = Math.floor(longitudeVal),
+                //度
+            oV2 = Math.floor((longitudeVal - oV1) * 60),
+                //分
+            oV3 = Math.round((longitudeVal - oV1) * 3600 % 60),
+                //秒
+            longitudeStr = longitudeD + oV1 + '°' + oV2 + '\'' + oV3 + '"';
+
+            var latitudeVal = Math.abs(latitude),
+                aV1 = Math.floor(latitudeVal),
+                //度
+            aV2 = Math.floor((latitudeVal - aV1) * 60),
+                //分
+            aV3 = Math.round((latitudeVal - aV1) * 3600 % 60),
+                //秒
+            latitudeStr = latitudeD + aV1 + '°' + aV2 + '\'' + aV3 + '"';
+
+            var rc = {
+                longitude: longitudeStr,
+                latitude: latitudeStr
+            };
+            return rc;
+        }
+    }, {
+        key: 'getBrowser',
+
+        /**
+         * check browser type
+        */
+        value: function getBrowser() {
+            var ua = window.navigator.userAgent;
+            //var isIE = window.ActiveXObject != undefined && ua.indexOf("MSIE") != -1; 
+            var isIE = !!window.ActiveXObject || "ActiveXObject" in window;
+            var isFirefox = ua.indexOf("Firefox") != -1;
+            var isOpera = window.opr != undefined;
+            var isChrome = ua.indexOf("Chrome") && window.chrome;
+            var isSafari = ua.indexOf("Safari") != -1 && ua.indexOf("Version") != -1;
+            if (isIE) {
+                return "IE";
+            } else if (isFirefox) {
+                return "Firefox";
+            } else if (isOpera) {
+                return "Opera";
+            } else if (isChrome) {
+                return "Chrome";
+            } else if (isSafari) {
+                return "Safari";
+            } else {
+                return "Unkown";
+            }
+        }
+        /**
+         * IP地址合法性检查
+         * return true, if it's validated.
+         */
+
+    }, {
+        key: 'chkIpAddress',
+        value: function chkIpAddress(strIP) {
+            var exp = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+            var rc = strIP.match(exp);
+            if (rc == null) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        /**
+         * MAC地址合法性检查
+         * return true, if it's validated.
+         */
+
+    }, {
+        key: 'chkMacAddress',
+        value: function chkMacAddress(strMac) {
+            var exp = /^([A-Fa-f0-9]{2}[-,:]){5}[A-Fa-f0-9]{2}$/;
+            var rc = strMac.match(exp);
+            if (rc == null) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        /**
+         * IMEI地址合法性检查
+         * IMEI规则：3位字母+5位数字
+         * return true, if it's validated.
+         */
+
+    }, {
+        key: 'chkImeiAddress',
+        value: function chkImeiAddress(strImei) {
+            var exp = /^[A-Za-z]{3}[0-9]{5}$/;
+            var rc = strImei.match(exp);
+            if (rc == null) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        // Nokia ajax req
+
+    }, {
+        key: 'ajaxReq',
+        value: function ajaxReq() {
+            //  xmlHttpRequest object   
+            var request = null;
+
+            // branch for native XMLHttpRequest object
+            if (window.XMLHttpRequest && !window.ActiveXObject) {
+                try {
+                    request = new XMLHttpRequest();
+                    try {
+                        //  attach the Bypass code, if the browser is firefox
+                        if (netscape.security.PrivilegeManager.enablePrivilege) {
+                            //  duplicate the function
+                            request._open = request.open;
+
+                            //  redefine the function definition
+                            request.open = function (method, url, flag) {
+                                try {
+                                    // Enable Universal Browser Read
+                                    netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+
+                                    //  call the native XmlHttpRequest.open method
+                                    this._open(method, url, flag);
+                                } catch (e) {
+                                    //  call the native XmlHttpRequest.open method
+                                    this._open(method, url, flag);
+                                }
+                            };
+                        }
+                    } catch (e) {
+                        //  eatup all exceptions
+                    }
+                } catch (e) {
+                    request = null;
+                }
+                // branch for IE/Windows ActiveX version
+            } else if (window.ActiveXObject) {
+                try {
+                    request = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        request = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        alert('Failed to create XmlHttprequest');
+                        return null;
+                    }
+                }
+            }
+
+            return request;
+        }
+        //
+        /* retrieves data from server via ajax
+            readyState=>XMLHttpRequest process status:
+            0:XMLHttpRequest no init
+            1:XMLHttpRequest start send out req
+            2:XMLHttpRequest req sent out
+            3:XMLHttpRequest start to read server's response
+            4:XMLHttpRequest complete to read server data.
+        // GET格式        
+        var aParam = "userName=zhangsan & pwd="1234";
+        var aUrl = gUrl + "/mobile/auth.php";
+        //POST格式
+        var aParam = aDat;
+        var aUrl = gUrl + "/mobile/auth.php";
+        ===============
+        ajaxParam = 
+        { url: "",
+            type: "POST", //"GET"
+            data: {
+            dataType: "json", //"form"
+            "command": "myCommond",
+            "otherData": "" 
+            },
+            success: function (data) {},
+            error: function (errorThrown) { alert("error");}
+        }
+        */
+
+    }, {
+        key: 'ajax',
+        value: function ajax(ajaxParam) {
+            try {
+                //
+                var myErrFun = function myErrFun(msg) {
+                    alert(msg);return;
+                };
+                //code the aParam
+
+
+                var codeParamData = function codeParamData(data) {
+                    var rc = "";
+                    for (var name in data) {
+                        rc += name + "=" + data[name] + "&";
+                    }
+                    return rc.substring(0, rc.length - 1); //encodeURIComponent( rc.substring(0, rc.length-1) );
+                };
+                //
+
+
+                var aHeaderContentTypeNormal = "application/x-www-form-urlencoded;charset=utf-8";
+                var aHeaderContentTypeJson = "application/json;charset=utf-8";
+                var aUrl = ajaxParam.url;
+                var PostType = ajaxParam.type.toLowerCase();
+                var aParam = codeParamData(ajaxParam.data);
+                //
+                var aHeaderContentType = aHeaderContentTypeNormal;
+                // aHeaderContentType = ajaxParam.data.dataType.toLowerCase();;
+                // if("json" == aHeaderContentType)
+                //     aHeaderContentType = aHeaderContentTypeJson;
+                // else
+                //     aHeaderContentType = aHeaderContentTypeNormal;
+                //
+                var aCallbackSucc;
+                if (typeof ajaxParam.success == "undefined") throw "No ajaxParam.success()";else aCallbackSucc = ajaxParam.success;
+                var aCallbackErr;
+                if (typeof ajaxParam.error == "undefined") aCallbackErr = myErrFun;else aCallbackErr = ajaxParam.error;
+                // new req
+                var xmlHttpReq = yutls.ajaxReq();
+            } catch (e) {
+                alert("XMLHttpRequest catch(" + e + ")");return;
+            }
+
+            xmlHttpReq.onreadystatechange = function () {
+                var status;
+                if (xmlHttpReq.readyState == 4) {
+                    try {
+                        status = xmlHttpReq.status; // == 200) {
+                    } catch (e) {
+                        alert(xmlHttpReq.status + e);
+                    }
+
+                    //operation with Server
+                    if (status == 200) {
+                        if (xmlHttpReq.responseText != null) aCallbackSucc(xmlHttpReq.responseText);else if (xmlHttpReq.responseXML != null) aCallbackSucc(xmlHttpReq.responseXML);else aCallbackErr("error:Response is NULL");
+                    } else if (xmlHttpReq.readyState == 4 && status != 200 && status != 0) {
+                        var err = "error: error status: " + status;
+                        aCallbackErr(err);
+                    }
+                }
+            };
+
+            if ("get" == PostType) {
+                // GET operation
+                var aUrlGet = aUrl + "?" + aParam;
+                //xmlHttpReq.open("GET", aUrl+"?username="+escape(aParam.UserName), true);
+                xmlHttpReq.open("GET", aUrlGet, true);
+                xmlHttpReq.send(null);
+            } else if ("post" == PostType) {
+                //POST operation
+                xmlHttpReq.open("post", aUrl, true);
+                //xmlHttpReq.setRequestHeader("Content-Length",aParam.length);
+                if (0 != aHeaderContentType) {
+                    /* "application/json" for new application
+                    * "application/x-www-form-urlencoded" for normal application
+                    */
+                    xmlHttpReq.setRequestHeader("Content-Type", aHeaderContentType);
+                }
+                //aParam = "command=loginByUserPWD&login_user=zhangsan & login_pwd=1234";
+                console.log('ajax->aParam:' + aParam);
+                xmlHttpReq.send(aParam);
+            }
+        }
+        /** loadHtml()
+         * load html file into the node
+         * @param aNode the node handle of DOM
+         * @param aFileDat source html module
+         * @param cbFunc callback function with input[node]
+         * 2019-05-15: remove ajax function, replace to ES6 import funciton to load the html file by a module.
+         */
+
+    }, {
+        key: 'load',
+        value: function load(aNode, aFileDat, cbFunc) {
+            if (typeof cbFunc != 'function' || typeof aNode == 'undefined' || aNode == null) {
+                return;
+            }
+            /* 2019-05-15: remove ajax function
+                // internal func to add inne html
+                function addHtml(data){
+                    aNode.innerHTML = data; //TODO,需要考察加载大文件时候是否需要做加载结束事件进行同步操作！
+                    cbFunc();
+                }
+                // call ajax to load file
+                yutls.ajax({ 
+                    url: aFileDat,
+                    type: "POST",
+                    success: addHtml,
+                    error: cbFunc
+                });
+            */
+            aNode.innerHTML = aFileDat; //TODO,需要考察加载大文件时候是否需要做加载结束事件进行同步操作！
+            cbFunc();
+        }
+    }]);
+
+    return yutls;
+}();
+
+exports.default = yutls;
+
+/***/ }),
+
+/***/ "./version.js":
+/*!********************!*\
+  !*** ./version.js ***!
+  \********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+class yutVersion {
+    constructor() {
+        this.name = 'YUT framework';
+        this.releaseVer = '1.0.x'; 
+     }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (yutVersion);
+// ---- version ----
+//[20181106] 0.9.x: first version, ready for YUT demo.
+//[20190529] 1.0.0: first release version, ready for using.
+// TODO list:
+// 1. [done]remove jQuery and replace loadfile() by import().
+// 2. [done]create new npm project of 'yur-cli' to create app framework by cli.
+// 3. [done]limit evMounted to 1 time by each view node.
+// 4. [done]add evDeactived event when the view is hiddened / closed
+
+
+/***/ })
+
+/******/ });
+});
+//# sourceMappingURL=yut.js.map

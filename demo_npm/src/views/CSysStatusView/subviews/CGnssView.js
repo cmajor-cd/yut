@@ -32,12 +32,12 @@ class CGnssView extends CView{
     regCtrlCb() {
         // demo: get data value from ajax
         $('#ssvTabGnssUpdateBtn').click(() => {
-            alert('Update data from server!');
+            alert('Update data from server! [this.getDatafromServer()]');
             this.getDatafromServer();
         });
         // demo: get data value from others classs's object
         $('#ssvTabGnssOverObjBtn').click(() => {
-            alert('Update data from OTHER OBJECTS!');
+            alert('Update data from OTHER OBJECTS! [theApp.traverseAllViews(), 遍历整个theAPP获取ssvTabLan/sysMaintView/dashboardView数据来填充本页]');
             //example: find node to the internal data.
             // let obj = yutls.getHandleByNodeID(theApp.m_hMainWnd, 'ssvTabLan');
             let _this = this;
@@ -58,6 +58,17 @@ class CGnssView extends CView{
             }
             //
             theApp.traverseAllViews(getOtherClassDataCb);
+        });
+        // demo: ssvTabGnssUpdateByTheAppGetNodeObjByViewIDBtn:"跨对象数据(theAPP.getNodeObjByViewID)",
+        $('#ssvTabGnssOverObjBtn').click(() => {
+            theAPP.getNodeObjByViewID('sysMaintView', (node)=>{
+                this.Data.CSysMaintViewNtpVal = node.Data.smvTimeVal;
+                yutls.msgBox('Get data from CSysMaintView:NtpVal = '+ this.Data.CSysMaintViewNtpVal);
+            });
+        });
+        // demo: ssvTabGnssUpdateByClassGetNodeObjByChildViewIDBtn:"本View子组件数据(CView.getNodeObjByViewID)",
+        $('#ssvTabGnssUpdateByClassGetNodeObjByChildViewIDBtn').click(() => {
+            
         });
     }
     // evMounted
@@ -99,11 +110,15 @@ class CGnssView extends CView{
 // CGnssView.prototype = new CView();
 CGnssView.prototype.Data = {
     ssvTabGnssFromLanIP1Val: 0, ssvTabGnssFromLanDHCPVal:1, ssvTabGnssCSysMaintViewNtpVal:2,ssvTabGnssCDashboardFwVal:3,
+    CSysMaintViewNtpVal:0, CLanViewssvTabLan1IP:0,
 }
 
 CGnssView.prototype.enHtmlMap = {ssvtgnssInforDemoTitle:"get other's OBJECTS' data + ajx + Html/Js sync",ssvtgnssInforTitle:"OverObject Data",ssvTabGnssSatNum:"LAN page(IP1)",ssvTabGnssSendNum:"LAN page(DHCP)",ssvTabGnssSuccNum:"CSysMaintView Page(NTP)",ssvTabGnssFailNum:"CDashboardPage(FW Ver)",ssvTabGnssUpdateBtn:"Update from server",ssvTabGnssOverObjBtn:"Update from Obj",
 };
-CGnssView.prototype.cnHtmlMap = {ssvtgnssInforDemoTitle:"跨对象(组件)数据获取 + ajx交互 + Html/Js数据同步",ssvtgnssInforTitle:"跨对象数据",ssvTabGnssSatNum:"LAN page(IP1)",ssvTabGnssSendNum:"LAN page(DHCP)",ssvTabGnssSuccNum:"数据维护Page(网络对时)",ssvTabGnssFailNum:"仪表盘Page(固件版本号)",ssvTabGnssUpdateBtn:"从服务器更新",ssvTabGnssOverObjBtn:"跨对象更新",
+CGnssView.prototype.cnHtmlMap = {ssvtgnssInforDemoTitle:"跨对象(组件)数据获取 + ajx交互 + Html/Js数据同步",ssvtgnssInforTitle:"跨对象数据",ssvTabGnssSatNum:"LAN page(IP1)",ssvTabGnssSendNum:"LAN page(DHCP)",ssvTabGnssSuccNum:"数据维护Page(网络对时)",ssvTabGnssFailNum:"仪表盘Page(固件版本号)",
+    ssvTabGnssUpdateBtn:"从服务器更新",ssvTabGnssOverObjBtn:"跨对象数据(theAPP.traverseAllViews)",
+    ssvTabGnssUpdateByTheAppGetNodeObjByViewIDBtn:"跨对象数据(theAPP.getNodeObjByViewID)",
+    ssvTabGnssUpdateByClassGetNodeObjByChildViewIDBtn:"本View子组件数据(CView.getNodeObjByViewID)",
 };
 
 export default CGnssView;

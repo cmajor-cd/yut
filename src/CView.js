@@ -468,6 +468,29 @@ class CView {
             }
         }
     }
+    /**
+     * getNodeObjByChildViewID: get my CHILD view's node object by view_id
+     * @param cbFunc the call back function, that inputed by caller.
+     * @param viewNodeId the nodeid of the view what you want to fine, //option.aNodeID
+     * This function find the node object  of mine subviews. 
+    */
+   getNodeObjByChildViewID(viewNodeId, cbFunc){
+    if ((viewNodeId == undefined) || (viewNodeId == null)||('' == viewNodeId)||(typeof cbFunc != 'function')) {
+        console.warn(yutls.gMsgWarning+'input parameters are incorrect!');
+        return;
+    }
+    //
+    if (this._childViewObjsTree.childView && this._childViewObjsTree.childView.length > 0) {
+        for (let i = 0; i < this._childViewObjsTree.childView.length; i++) {
+            _node = this._childViewObjsTree.childView[i];
+            if ((viewNodeId == _node._strViewID)&&(typeof cbFunc == 'function')) {
+                cbFunc(node); // find the special view bode, callback, then return.
+                return;
+            }
+        }
+    }
+
+   }
 }
 // CView.prototype = {
 //     constructor: CView, // fix constructor

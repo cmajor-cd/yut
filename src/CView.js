@@ -97,7 +97,7 @@ class CView {
             // ||(aLanguage == null)||(aLanguage == undefined)
         ) {
             alert('CView: option parameter is Invalid! Pls, check!');
-            console.error('CView: option parameter is Invalid');
+            console.error(yutls.gMsgError + 'CView: option parameter is Invalid');
             console.error(option);
             return;
         }
@@ -128,7 +128,7 @@ class CView {
     //4. regiest the dom call back
     _loadHtml() {
         if ((this._strHtmlSrc == null) || (this._strHtmlSrc == undefined)) { //if this view no html, do nothing.
-            console.error('CView._loadHtml, no html exists.');
+            console.error(yutls.gMsgError + 'CView._loadHtml, no html exists.');
         }
         else {
             // 2019-05-15: remove ajax function, replace by ES6 import
@@ -217,7 +217,7 @@ class CView {
                 let childObjs = [];
                 for (let i = 0; i < numViews; i++) {
                     if ((typeof _this._childViewsArray[i] != 'function') || (_this._childViewsArray[i] == null) || (_this._childViewsArray[i] == undefined)) {
-                        console.error('CView._createChildViews: invalid class name.');
+                        console.error(yutls.gMsgError + 'CView._createChildViews: invalid class name.');
                         return;
                     }
                     let obj = new _this._childViewsArray[i](_this);
@@ -229,7 +229,7 @@ class CView {
             }
         }
         else {
-            console.error('CView._createChildViews input parameter is invalid!');
+            console.error(yutls.gMsgError + 'CView._createChildViews input parameter is invalid!');
         }
     }
     /**
@@ -255,7 +255,7 @@ class CView {
             let _this = aThisView;
             if (_this == theApp) {
                 // THIS is theAPP, stop event loop
-                console.warn('THIS is theAPP, stop event loop');
+                console.warn(yutls.gMsgWarning+'THIS is theAPP, stop event loop');
                 return;
             }
             //
@@ -283,7 +283,7 @@ class CView {
                     _this._oEvCallback.evMounted(_this);
                     _this._childViewObjsTree.evMountedTriggered = 1; // set triggered flag to 1.
                 }
-                // console.warn('[ViewMounted]=> ' + _this._strViewID);
+                // console.warn(yutls.gMsgWarning+'[ViewMounted]=> ' + _this._strViewID);
                 //d. goto THIS's parent view to check if the parent is mounted!
                 traverseViewTree(_this._hParent);
             }
@@ -309,7 +309,7 @@ class CView {
         if (ff == 'function') {
             _this._oEvCallback.evActived(_this);
         }else{
-            // console.warn(_this._strViewID + '::_this._oEvCallback.evActived is not a function!');
+            // console.warn(yutls.gMsgWarning+_this._strViewID + '::_this._oEvCallback.evActived is not a function!');
         }
     }
     /**
@@ -326,7 +326,7 @@ class CView {
     if (ff == 'function') {
         _this._oEvCallback.evDeactived(_this);
     }else{
-        // console.warn(_this._strViewID+'::_this._oEvCallback.evDeactived is not a function!');
+        // console.warn(yutls.gMsgWarning+_this._strViewID+'::_this._oEvCallback.evDeactived is not a function!');
     }
 }
 /**
@@ -345,7 +345,7 @@ class CView {
             }
         }
         if (!flag) {
-            console.error('CView.regEvHandler: no evType is found(' + evHandler.evType + ")");
+            console.error(yutls.gMsgError + 'CView.regEvHandler: no evType is found(' + evHandler.evType + ")");
         }
     }
     /**
@@ -363,7 +363,7 @@ class CView {
             }
         }
         if (!flag) {
-            console.error('CView.unRegEvHandler: no evType is found(' + evType + ")");
+            console.error(yutls.gMsgError + 'CView.unRegEvHandler: no evType is found(' + evType + ")");
         }
     }
     /**
@@ -398,7 +398,7 @@ class CView {
     activeView() {
         let cnt = arguments.length;
         if (cnt == 0) { // no arg
-            console.log('CView.activeView input 0 => arg is null,means the view will active itself.');
+            console.log(yutls.gMsgLog + 'CView.activeView input 0 => arg is null,means the view will active itself.');
             //show the view
             this._showView(this.node, true);
             //trigger evActived
@@ -440,7 +440,7 @@ class CView {
     deactiveView() {
         let cnt = arguments.length;
         if (cnt == 0) { // no arg
-            console.log('CView.deactiveView input 0 => arg is null,means the view will deactiveView itself.');
+            console.log(yutls.gMsgLog + 'CView.deactiveView input 0 => arg is null,means the view will deactiveView itself.');
             // hidde the view
             this._showView(this.node, false);
             //trigger evDeactived
@@ -482,9 +482,9 @@ class CView {
     //
     if (this._childViewObjsTree.childView && this._childViewObjsTree.childView.length > 0) {
         for (let i = 0; i < this._childViewObjsTree.childView.length; i++) {
-            _node = this._childViewObjsTree.childView[i];
+            let _node = this._childViewObjsTree.childView[i];
             if ((viewNodeId == _node._strViewID)&&(typeof cbFunc == 'function')) {
-                cbFunc(node); // find the special view bode, callback, then return.
+                cbFunc(_node); // find the special view bode, callback, then return.
                 return;
             }
         }

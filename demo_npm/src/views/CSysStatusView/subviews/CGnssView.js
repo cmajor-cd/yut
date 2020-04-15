@@ -60,15 +60,11 @@ class CGnssView extends CView{
             theApp.traverseAllViews(getOtherClassDataCb);
         });
         // demo: ssvTabGnssUpdateByTheAppGetNodeObjByViewIDBtn:"跨对象数据(theAPP.getNodeObjByViewID)",
-        $('#ssvTabGnssOverObjBtn').click(() => {
-            theAPP.getNodeObjByViewID('sysMaintView', (node)=>{
+        $('#ssvTabGnssUpdateByTheAppGetNodeObjByViewIDBtn').click(() => {
+            theApp.getNodeObjByViewID('sysMaintView', (node)=>{
                 this.Data.CSysMaintViewNtpVal = node.Data.smvTimeVal;
                 yutls.msgBox('Get data from CSysMaintView:NtpVal = '+ this.Data.CSysMaintViewNtpVal);
             });
-        });
-        // demo: ssvTabGnssUpdateByClassGetNodeObjByChildViewIDBtn:"本View子组件数据(CView.getNodeObjByViewID)",
-        $('#ssvTabGnssUpdateByClassGetNodeObjByChildViewIDBtn').click(() => {
-            
         });
     }
     // evMounted
@@ -110,15 +106,16 @@ class CGnssView extends CView{
 // CGnssView.prototype = new CView();
 CGnssView.prototype.Data = {
     ssvTabGnssFromLanIP1Val: 0, ssvTabGnssFromLanDHCPVal:1, ssvTabGnssCSysMaintViewNtpVal:2,ssvTabGnssCDashboardFwVal:3,
-    CSysMaintViewNtpVal:0, CLanViewssvTabLan1IP:0,
+    CSysMaintViewNtpVal:'n/a', 
 }
 
-CGnssView.prototype.enHtmlMap = {ssvtgnssInforDemoTitle:"get other's OBJECTS' data + ajx + Html/Js sync",ssvtgnssInforTitle:"OverObject Data",ssvTabGnssSatNum:"LAN page(IP1)",ssvTabGnssSendNum:"LAN page(DHCP)",ssvTabGnssSuccNum:"CSysMaintView Page(NTP)",ssvTabGnssFailNum:"CDashboardPage(FW Ver)",ssvTabGnssUpdateBtn:"Update from server",ssvTabGnssOverObjBtn:"Update from Obj",
+CGnssView.prototype.enHtmlMap = {ssvtgnssInforDemoTitle:"get other's OBJECTS' data + ajx + Html/Js sync",ssvtgnssInforTitle:"OverObject Data",ssvTabGnssSatNum:"LAN page(IP1)",ssvTabGnssSendNum:"LAN page(DHCP)",ssvTabGnssSuccNum:"CSysMaintView Page(NTP)",ssvTabGnssFailNum:"CDashboardPage(FW Ver)",
+    ssvTabGnssUpdateBtn:"Update from server",ssvTabGnssOverObjBtn:"CorssObjectData(theAPP.traverseAllViews)",
+    ssvTabGnssUpdateByTheAppGetNodeObjByViewIDBtn:"CorssObjectData(theAPP.getNodeObjByViewID)",
 };
 CGnssView.prototype.cnHtmlMap = {ssvtgnssInforDemoTitle:"跨对象(组件)数据获取 + ajx交互 + Html/Js数据同步",ssvtgnssInforTitle:"跨对象数据",ssvTabGnssSatNum:"LAN page(IP1)",ssvTabGnssSendNum:"LAN page(DHCP)",ssvTabGnssSuccNum:"数据维护Page(网络对时)",ssvTabGnssFailNum:"仪表盘Page(固件版本号)",
     ssvTabGnssUpdateBtn:"从服务器更新",ssvTabGnssOverObjBtn:"跨对象数据(theAPP.traverseAllViews)",
     ssvTabGnssUpdateByTheAppGetNodeObjByViewIDBtn:"跨对象数据(theAPP.getNodeObjByViewID)",
-    ssvTabGnssUpdateByClassGetNodeObjByChildViewIDBtn:"本View子组件数据(CView.getNodeObjByViewID)",
 };
 
 export default CGnssView;

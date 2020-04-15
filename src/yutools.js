@@ -9,7 +9,9 @@ class yutls {
     constructor() {
         this.gDebugLinkData = 0;
         // this.gDebugFlg = 0;
+        this.gMsgLog = 'yut log: ';
         this.gMsgWarning = 'yut warning: ';
+        this.gMsgError = 'yut error: ';
      }
     //-debug functions
     /**

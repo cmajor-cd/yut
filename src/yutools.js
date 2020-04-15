@@ -9,6 +9,9 @@ class yutls {
     constructor() {
         this.gDebugLinkData = 0;
         // this.gDebugFlg = 0;
+        this.gMsgLog = 'yut log: ';
+        this.gMsgWarning = 'yut warning: ';
+        this.gMsgError = 'yut error: ';
      }
     //-debug functions
     /**
@@ -231,7 +234,7 @@ class yutls {
             return true;
         }
     }
-        /**
+    /**
      * IMEI地址合法性检查
      * IMEI规则：3位字母+5位数字
      * return true, if it's validated.

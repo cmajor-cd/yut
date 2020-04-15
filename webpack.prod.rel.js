@@ -1,7 +1,6 @@
 /** webpack.prod.js
  * 2019-05-15
  * YangYutong
- * 参考样例： https://www.jianshu.com/p/bc8c067575ba
  * */
 
 const path = require("path");//nodejs中的基本包，处理路径的

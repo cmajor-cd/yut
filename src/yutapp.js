@@ -95,6 +95,37 @@ class theApp {
          */
         traverseNode(this.m_hMainWnd);
     }
+    /** ---
+     * get the node of the input view.
+     *
+     * @param cbFunc the call back function, that inputed by caller.
+     * @param viewNodeId the nodeid of the view(=>class.option.aNodeID) what you want to find.
+     * the nodeObject will be put into the cbFunc(node)
+     */
+    static getNodeObjByViewID(viewNodeId, cbFunc) {
+        /**
+         * traverseNode, and exec _loadHtml() to render all views
+         */
+        function traverseNode(node) {
+            if ((node != undefined) || (node != null)) {
+                if(('' == viewNodeId)&&(typeof cbFunc == 'function')){
+                    cbFunc(node); // if no special view need to search, callback each view object.
+                }else if ((viewNodeId == node._strViewID)&&(typeof cbFunc == 'function')) {
+                    cbFunc(node); // find the special view bode, callback, then return.
+                    return;
+                }
+            }
+            if (node._childViewObjsTree.childView && node._childViewObjsTree.childView.length > 0) {
+                for (let i = 0; i < node._childViewObjsTree.childView.length; i++) {
+                    traverseNode(node._childViewObjsTree.childView[i]);
+                }
+            }
+        }
+        /** ----------
+         * DO traverseNode operation...
+         */
+        traverseNode(this.m_hMainWnd);
+    }
     // theApp.test = function(cb){
     //     let type = typeof cb;
     //     let pa = 12;

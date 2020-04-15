@@ -46,7 +46,7 @@ class CStore {
     regRenderData(aData) {
         if ((Object.prototype.toString.call(aData) != '[object Object]')
             && (Object.prototype.toString.call(aData) != '[object Array]')) {
-            console.error('the type of aData should be [Object or Array]!');
+            console.error('yut error: ' + 'the type of aData should be [Object or Array]!');
             return false;
         }
         // start the observer listen
@@ -120,7 +120,7 @@ class CStore {
             }
         }
         else {
-            console.warn('CStore._renderCb:: invalid variant! ');
+            console.warn('yut warning: ' + 'CStore._renderCb:: invalid variant! ');
         }
     }
     setRenderData(aData) {
@@ -147,7 +147,7 @@ class CStore {
                 delete this._renderData2CbMap[aKeyVariName];
                 break;
             default:
-                console.error('CStore:: unknow action in actRenderData2CbMap! ');
+                console.error('yut error: ' + 'CStore:: unknow action in actRenderData2CbMap! ');
         }
         // console.log(this._renderData2CbMap);
     }

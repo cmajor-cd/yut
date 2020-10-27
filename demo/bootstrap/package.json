@@ -1,7 +1,7 @@
 {
-  "name": "eduadmin",
+  "name": "yut-demo-bootstrap",
   "version": "1.0.0",
-  "description": "master of education org.",
+  "description": "bootstrap.",
   "main": "src/index.js",
   "scripts": {
     "watch": "webpack --progress --colors --watch  --config webpack.dev.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://gitee.com/cmajor-cd/yut"
   },
   "keywords": [
     "demo"

@@ -1,0 +1,106 @@
+
+<!-- nav title -->
+<nav id='navBar' class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"><span>YUT</span> Admin</a>
+
+			<div class="collapse navbar-collapse" id="">
+				<ul class="nav navbar-nav ">
+					<li class="active title-btn"><a href="#">iOS</a></li>
+					<li><a href="#">SVN</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							Java <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">spring MVC</a></li>
+							<li><a href="#">spring boot</a></li>
+							<li><a href="#">Jasper cloud</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Next one</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Another one</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> User <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#" class="glyphicon glyphicon-user"> Profile</a></li>
+							<li><a href="#" class="glyphicon glyphicon-cog"> Settings</a></li>
+							<li><a href="#" class="glyphicon glyphicon-log-out"> Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+
+		</div>
+	</div><!-- /.container-fluid -->
+</nav>
+<!-- left sidrbar -->
+<div id="sideBar" class="sidebar col-md-2 ">
+	<ul class="nav menu x-ul">
+		<li id='dashboardMItem' class="x-item"><a id="dashboardEntry" title="Dashboard" class="glyphicon glyphicon-dashboard nowrap"> 仪表板</a></li>
+		<li id='sysStatusMItem' class="x-item"><a id="sysStatusViewEntry" title="System Status " class="glyphicon glyphicon-th nowrap"> 系统状态</a></li>
+		<li class="parent " style="white-space: nowrap;">
+			<a href="#" class="glyphicon glyphicon-list nowrap">
+			 系统工具<span data-toggle="collapse" href="#sub-item-systools" class="icon pull-right glyphicon glyphicon-s glyphicon glyphicon-chevron-right" ></span> 
+			</a>
+			<ul class="children collapse " id="sub-item-systools">
+				<li id="sysMaintViewEntry" class="x-item">
+					<a id = "sysMaintViewEntryTxt" class="glyphicon glyphicon-share-alt nowrap" title="System Maintain" >
+							系统维护
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li role="presentation" class="divider"></li>
+		<li id='aboutMItem' class="x-item"><a id="aboutViewEntry" title="System Status" class="glyphicon glyphicon-user nowrap"> 关于</a></li>
+	</ul>
+</div><!--/.sidebar-->
+
+<!-- main contenct -->
+<div id='mainContenct' class="container col-md-10 col-md-offset-2 ">
+	<div class="row">
+		<ol class="breadcrumb">
+			<li><a id='homeBtn' href="#"><span class="glyphicon glyphicon-indent-right"></span></a></li>
+				<li id='bcDash' class="bc active">仪表板</li>
+				<li id='bcStatus' class="bc hidden">系统状态</li>
+				<li id='bcMaint' class="bc hidden">系统维护</li>
+		</ol>
+	</div><!--/. main content header row-->
+
+	<!-- 功能View区 -->
+	<div id="dashboardView" class="row row-top-10px hidden" >
+	</div>
+
+	<div id="sysStatusView" class="row row-top-10px hidden">
+	</div>
+
+	<div id="sysMaintView" class=" row-top-10px hidden">
+	</div>
+
+
+</div>
+<!-- ****辅助页面区**** -->
+<!-- START videoView -->
+<!-- <div id="videoView" class="transmodalview hidden"> 
+</div>-->
+<!-- LoginView区 -->
+<div id="loginView" class="loginView hidden">
+</div>
+<!-- END LoginView区 -->
+<!--footer -->
+<div class="footer text-center col-lg-12">
+	<p class="p1 copyrights" id="footerTitle"> YUT | 版权所有XXX, 2018. </p>
+</div> 

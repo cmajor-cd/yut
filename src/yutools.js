@@ -9,10 +9,13 @@ class yutls {
     constructor() {
         this.gDebugLinkData = 0;
         // this.gDebugFlg = 0;
-        this.gMsgLog = 'yut log: ';
-        this.gMsgWarning = 'yut warning: ';
-        this.gMsgError = 'yut error: ';
-     }
+        // this.gMsgLog = 'yut log: ';
+        // this.gMsgWarning = 'yut warning: ';
+        // this.gMsgError = 'yut error: ';
+    }
+   static logHeader(){ return 'yut log: '; }
+   static WarningHeader(){ return 'yut warning: '; }
+   static errorHeader(){ return 'yut error: '; }
     //-debug functions
     /**
      * set status of debug, and set the return string of debug url.

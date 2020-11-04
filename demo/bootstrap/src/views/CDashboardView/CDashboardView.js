@@ -11,7 +11,7 @@ class CDashboardView extends CView{
         var _this = this;
         //1. internal variant / function
         _this.Data = {
-            dsvLocTimeVal: '1',dsvDurationTimeVal: 2, dsvIMEIVal: '123456789', dsvFWVerVal: '0.0.1',
+            // dsvLocTimeVal: '1',dsvDurationTimeVal: 2, dsvIMEIVal: '123456789', dsvFWVerVal: '0.0.1',
         }
         // 多语言实现
         _this.enHtmlMap = {
@@ -48,17 +48,17 @@ class CDashboardView extends CView{
     }
     //
     regCtrlCb(){
-        $('#dsvUpdateBtn').click(()=>{
-            this.Data.dsvLocTimeVal = document.getElementById("dsvmtLocTimeVal").value;
-            this.Data.dsvDurationTimeVal = document.getElementById("dsvmtDurationTimeVal").value;
-            this.Data.dsvIMEIVal = document.getElementById("dsvmtIMEIVal").value;
-            this.Data.dsvFWVerVal = document.getElementById("dsvmtFWVerVal").value;
-            // console.log(this._viewStore.getRenderData());
-        });
-        //
-        $('#dsvTestBtn').click(()=>{
-            yutls.msgBox('This is a test to [CALL yutls class member=>yutls.msgBox]!');
-        });
+        // $('#dsvUpdateBtn').click(()=>{
+        //     this.Data.dsvLocTimeVal = document.getElementById("dsvmtLocTimeVal").value;
+        //     this.Data.dsvDurationTimeVal = document.getElementById("dsvmtDurationTimeVal").value;
+        //     this.Data.dsvIMEIVal = document.getElementById("dsvmtIMEIVal").value;
+        //     this.Data.dsvFWVerVal = document.getElementById("dsvmtFWVerVal").value;
+        //     // console.log(this._viewStore.getRenderData());
+        // });
+        // //
+        // $('#dsvTestBtn').click(()=>{
+        //     yutls.msgBox('This is a test to [CALL yutls class member=>yutls.msgBox]!');
+        // });
     }
     
 }

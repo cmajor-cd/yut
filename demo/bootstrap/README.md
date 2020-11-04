@@ -7,7 +7,7 @@
    * 使用yut-cli脚手架：yut-cli c myapp
    * 直接拷贝 demo/simple 代码
 2. 安装库
-   * npm install bootstrap@3.2.0
+   * npm install bootstrap
    * npm install popper
    * npm install jquery
 3. 定制webpack
@@ -37,15 +37,17 @@
     ```
     index.js:
         ...
-    import'../node_modules/bootstrap/dist/css/bootstrap.min.css';
-    import 'jquery';
-    import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
-
+        import'../node_modules/bootstrap/dist/css/bootstrap.min.css';
+        import 'jquery';
+        import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
+        // 引入三方 icon 库
+        import '../node_modules/feather-icons/dist/feather';
+        import feather from 'feather-icons';
     ````
 5. 定制 app-template.html (index.html) 文件
     * 按照 bootstrap 的要求修改<head>标签：
     ```
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 6. 按照需求拆解和定制前端 view 到 各个模块中
     * html + css + js
@@ -92,26 +94,36 @@
     * fold-side-bar => sidebar 收缩时的宽度，根据需要设置
     * expand-side-bar => sidebar 展开时 右边栏 maincontent 需要退让的宽度
     * nowrap => 用于 sidebar 菜单项的标签比如<a>，当收起时内容不回行，这样左边栏显示图标而没有内容，显得很干净    
-###   2. 编写 button 点击响应事件代码     
+###   2. 编写收缩和扩展 button 点击响应事件代码     
     ```
     CMainFrm.js:
         ...
-            $('#homeBtn').click(()=>{
-            let sidebar = $('#sideBar');
+        // 收缩和扩展 sidebar 区域
+        // 1. 使用 css 将sidebar 的宽度调节为合适宽度
+        // 2. 调节 右边栏 的布局宽度
+        // 3. 设置 sidebar 的菜单内容<a>标签css为不换行 a{ white-space:nowrap; }
+        $('#folderBtn').click(()=>{
+            let navbarBrand = $('#navbarBrand');
+            let sidebar = $('#sidebarMenu');
             let mainContenct = $("#mainContenct");
             if(sidebar.hasClass('fold-side-bar')){
                 // 展开
                 sidebar.removeClass('fold-side-bar');
                 //
-                mainContenct.removeClass('expand-side-bar');
-                mainContenct.removeClass('col-md-offset-1');
-                mainContenct.addClass('col-md-offset-2');
+                navbarBrand.removeClass('fold-side-bar');
+                navbarBrand.addClass('col-md-2 ');
+                //
+                mainContenct.removeClass('col-md-11 col-md-offset-2');
+                mainContenct.addClass('col-md-10');
             }else{
                 // 收拢
                 sidebar.addClass('fold-side-bar');
                 //
-                mainContenct.removeClass('col-md-offset-2');
-                mainContenct.addClass('expand-side-bar');
+                navbarBrand.removeClass('col-md-2');
+                navbarBrand.addClass('fold-side-bar');
+                //
+                mainContenct.removeClass('col-md-10');
+                mainContenct.addClass('col-md-11 col-md-offset-2');
             }
-        });
+          });
     ```     

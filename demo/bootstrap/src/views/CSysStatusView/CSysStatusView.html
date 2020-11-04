@@ -1,12 +1,12 @@
 
   <!-- System View的 html 定义 -->
 
-<div id="ssvTab" class="row-top-10px row-left-10px">
+<div id="ssvTab" class="tab">
     <p id="ssvTabGnssDemoTitle">Demo演示childView创建 + Html/Js数据同步 + 事件触发 + 私有css</p>
+    <button id="ssvTabRefreshBtn" type="button" class="btn btn-success" style="margin: 5px 5px 3px;width: 150px; ">Refresh</button>
     <ul class="nav nav-tabs">
-        <li target="ssvTabGnss" class="tab-header-item active" id='ssvTabHeaderGnss'><a data-toggle="tab" class="light">GNSS</a></li>
-        <li target="ssvTabLan" class="tab-header-item" id='ssvTabHeaderLan'><a data-toggle="tab" class="light">LAN</a></li>
-        <button id="ssvTabRefreshBtn" type="button" class="btn btn-success" style="margin: 5px 15px 3px;width: 150px;">Refresh</button>
+        <li target="ssvTabGnss" class="tab-header-item active" id='ssvTabHeaderGnss'><a >GNSS</a></li>
+        <li target="ssvTabLan" class="tab-header-item" id='ssvTabHeaderLan'><a >LAN</a></li>
     </ul>
     <div class="tab-content" >
         <div id="ssvTabGnss" class="tab-content-view hide">

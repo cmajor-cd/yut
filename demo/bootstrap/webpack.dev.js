@@ -14,7 +14,7 @@ module.exports = merge(common, {
     devServer:{
         //"start": "webpack-dev-server --inline --open --port 5008"
         // contentBase:path.join(__dirname,"./release"),
-        port:'5008',
+        port:'5558',
         inline: true,
         hot: true,
         open: 'Chrome',//'firefox'

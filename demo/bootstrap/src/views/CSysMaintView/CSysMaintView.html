@@ -1,13 +1,15 @@
 <!-- CSysMaintView View html -->
-<div class="row">
-<div class="col-md-6 row-space-10px ">
+<div class='row'>
+<div class="col-md-6 ">
     <div class="panel panel-default">
     <table class="dataintable">
     <p id="smvDemoTitle">Demo演示childView创建 + Html/Js数据同步</p>
     <tbody>
         <tr><th colspan="3" id='smvNTPTitle'>NTP对时</th></tr>
         <tr><td class="weight" style="width: 100px">NTP Server</td> <td><a id="smvNTPServerIP"> 210.72.145.44</a></td>
-            <td rowspan="2" style="text-align: center;vertical-align: middle"><button id="smvRefreshBtn" class="incell" style="width: 100px; height: 50px">刷新</button></td>
+            <td rowspan="2" style="text-align: center;vertical-align: middle">
+                <button id="smvRefreshBtn" type="button" class="btn btn-success" style="width: 100px; height: 50px">刷新</button>
+            </td>
         </tr>
         <tr><td class="weight" style="width: 100px"><a id="smvTime">网络对时</a></td> <td><a>{{smvTimeVal}}</a></td>
         </tr>
@@ -15,7 +17,7 @@
     </table>
     </div>
 </div>
-<div class="col-md-6 row-space-10px ">
+<div class="col-md-6">
     <div class="panel panel-default">
     <table class="table">
     <tbody>
@@ -35,4 +37,3 @@
     </div>
 </div>
 </div>
-

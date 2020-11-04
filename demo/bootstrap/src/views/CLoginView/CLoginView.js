@@ -2,7 +2,7 @@
  * Login View的主Class定义
  */
 import htmlTemplate from './CLoginView.html';
-// import './CLoginView.css';
+import './CLoginView.css';
 import {yutls, theApp, CView} from 'yut';
 // import tools from '../js/tools';
 
@@ -65,8 +65,7 @@ class CLoginView extends CView{
                         //1.hide loginview;
                         //2. active maincontent + active sidebar;
                         //3. active dashboardView;
-                        //$('#loginView').addClass('hidden');
-                        $('#navBar').removeClass('hidden');$('#sideBar').removeClass('hidden');$('#mainContenct').removeClass('hidden');
+                        $('#navBar').removeClass('hidden');$('#contenctArea').removeClass('hidden');
                         theApp.m_hMainWnd.activeView('dashboardView');
                     }
                 },

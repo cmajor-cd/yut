@@ -9,12 +9,14 @@ import {appName,releaseVer} from './version';
 
 /** include main css stryle */
 import'../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './css/styles.dark.css';
-import './css/styles.bright.css';
+import './assets/styles.custom.css';
+import './assets/styles.layout.css';
 
 import 'jquery';// 
 // import $ from 'jquery';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
+import '../node_modules/feather-icons/dist/feather';
+import feather from 'feather-icons';
 
 /** include my views */
 import CMainFrm from './views/CMainFrm';
@@ -44,6 +46,7 @@ function initMain()
     // init the mainFrm by yut lib API.
     theApp.setAppName(appName);
     theApp.attachMainFrm(CMainFrm);
+    //
+    feather.replace();
 }
 initMain();
-

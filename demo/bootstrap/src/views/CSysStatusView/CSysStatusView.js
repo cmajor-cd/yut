@@ -1,6 +1,6 @@
 import htmlTemplate from './CSysStatusView.html';
+import './CSysStatusView.css'
 
-// import $ from 'jquery';
 import {CView,yutls,theApp} from 'yut';
 import CGnssView from './subviews/CGnssView';
 import CLanView from './subviews/CLanView';
@@ -54,11 +54,6 @@ class CSysStatusView extends CView{
                 yutls.msgBox('Get data from CLanViewssvTab:Lan1IP = '+ this.Data.CLanViewssvTabLan1IP);
             });
         });
-    }
-    // evMounted
-    myMounted() {
-        console.log('CSysStatusView.myMounted is CALLED!');
-        //alert('CSysStatusView.prototype.myMounted is CALLED!');
     }
     // evActived
     myActived(self) {

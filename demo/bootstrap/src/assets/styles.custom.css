@@ -1,0 +1,209 @@
+/* yangyutong: 2020-11
+*  define the main customized controller style
+*/
+
+/*
+body {
+	font-family: Verdana, Arial, '微软雅黑','宋体';
+	font-size:14px;
+}
+
+button:hover { background-color: #aaa;}
+
+div.maincontent button, div.maincontent input, div.maincontent select, div.maincontent textarea {
+    font-family:Consolas, "Courier New", Courier, monospace;
+    font-size:12px;
+}
+
+h1, h2, h3, h4, h5, h6, em { font-weight: bold; }
+h2 { font-size: 20px;}
+h3 { font-size: 16px;}
+h4 { font-size: 14px;}
+
+strong {
+    font-family:'微软雅黑';
+    font-size:18px;
+    color:#3f3f3f;
+    font-weight:800;
+}
+p {
+	font-size:16px;
+	margin-left:50px;
+}
+
+/* ----------------------------------- 表格 ----------------------------------- */
+
+table.dataintable {
+	margin-top:15px;
+	border-collapse:collapse;
+	border:1px solid #aaa;
+	width:100%;
+	}
+
+table.dataintable th {
+	vertical-align:baseline;
+	padding:5px 15px 5px 6px;
+	background-color:#3F3F3F;
+	border:1px solid #3F3F3F;
+	text-align:left;
+	color:#fff;
+}
+table.dataintable th.light { background-color:rgb(110, 107, 107);}
+table.dataintable td {
+	vertical-align:text-top;
+	padding:3px 6px 3px 6px;
+	border:1px solid #aaa;
+	text-align: left;
+}
+table.dataintable td.weight {
+	vertical-align:baseline;
+	padding:5px 6px 5px 6px;
+	background-color:rgb(212, 211, 211);
+	font-size: 14px;
+	min-width: 100px; max-width: 150px;
+}
+table.dataintable td a.mark {color: #0000ff;font-size:12px;}
+table.dataintable td select {margin:2px 0 2px 0; width: 130px; }
+table.dataintable td.memo {font-size:12px;}
+table.dataintable td input{margin:2px 0 2px 0; }
+table.dataintable td input[type=radio]{margin:2px 0 2px 0; vertical-align: middle;}
+table.dataintable td input[type=checkbox]{margin:2px 0 2px 0; vertical-align: middle;}
+table.dataintable td input[type=submit].incell, button.incell { border-style: none; height:25px; width:80px; }
+table.dataintable td input[type=submit].incell:hover, button.incell:hover{ border-style: none; background-color: rgb(238, 208, 208);}
+table.dataintable td input[type=submit].incellsmall, button.incellsmall { margin-left: 2px;margin-right: px; height:25px; width:50px; }
+table.dataintable td input[type=submit].incellsmall:hover, button.incellsmall:hover{ border:1px .999 solid; background-color: rgb(238, 208, 208);}
+
+table.dataintable tr:nth-child(odd) {
+	background-color:#F5F5F5;
+}
+
+table.dataintable tr:nth-child(even) {
+	background-color:#fff;
+}
+
+table.dataintable pre {
+	width:auto;
+	margin:0;
+	padding:0;
+	border:0;
+	background-color:transparent;
+	}
+
+table.dataintable p {margin:0 0 2px 0;}
+
+.maincontent table.dataintable ul, .maincontent table.dataintable li {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	} 
+
+table.dataintable td em{
+	color:#0000ff;
+	font-weight:normal;
+}
+
+table.dataintable .table_value {color:#0F93D2;}
+
+.no_wrap {white-space:nowrap;}
+
+.maincontent table.dataintable ul.listintable {
+	margin:20px;
+	padding:0;
+	}
+
+.maincontent table.dataintable ul.listintable  li{
+	list-style-type:disc;
+	}
+
+tr.notsupported {
+color:#999999;
+}
+
+.maincontent button .incell {border:1px .999 solid;}
+.maincontent button .incell:hover, button.incell:hover{ border:1px .999 solid; background-color: rgb(238, 208, 208);}
+/*----------------- playback/download VIEW ---------------------*/
+div.transmodalview{
+	position: absolute;
+    margin: 0;
+	/* margin-top: 100px; */
+	padding: 0;
+	height: 100%;
+	width:  100%;
+	border: 0;
+	text-align: center;
+	background: rgba(180, 180, 178, 0.6);
+	overflow: auto;
+}
+div.transmodalview .showarea{
+	position: relative;
+	margin-left:50px; margin-right:50px; margin-top: 45px; margin-bottom: 10px;
+	background: rgb(255, 255, 255);
+}
+div.transmodalview .btn-content{
+	float: left;
+	margin: 5px;
+	width: 65px; font-size: 12px; text-align: left;
+	/* background-color: #acacac; */
+}
+div.transmodalview a{font-size: 12px; vertical-align: 5px;}
+div.transmodalview input[type=range]{ width:200px;	}
+div.transmodalview button { width:85px; margin: 3px 1px 3px 1px; }
+
+.operationmodalview {
+	height: 100%; 
+	border: 1px solid #dddddd;
+	background-color: #5e5252;
+}
+/* .operationmodalview .dataintable { text-align: center} */
+
+/* header标签部分 */
+.operationmodalview .view-header {
+	height: 25px;
+	text-align: center; vertical-align: middle;
+	/* background-color: #686161; */
+	background-color: #5e5252;
+}
+.operationmodalview .view-header a.title {
+	float: left;
+	margin: 3px 0 3px 10px;
+	font-size: 16px;
+	color: #dddddd;
+}
+.operationmodalview .view-header a.title.link {
+	float: left;
+	margin: 5px 0 3px 10px;
+	font-size: 15px;
+	color: #c2c3fa;
+}
+.operationmodalview .view-header select.title {
+	float: left;
+	margin: 5px 0 5px 15px;
+	width: 110px;
+}
+.operationmodalview .view-header button.title {
+	float: left;
+	margin: 5px 0 5px 15px;
+	height: 20px;width: 100px;
+	-moz-border-radius: 7px;      /* Gecko browsers */
+	-webkit-border-radius: 7px;   /* Webkit browsers */
+	border-radius:7px;            /* W3C syntax */
+	/* background: #c9c4c4; */
+}
+/* 内容面板样式 */
+.operationmodalview .video-content {
+	/* overflow: auto; */
+	/*margin: auto;  自动居中 */
+	margin-top: 5px;
+	text-align: center;
+	/* padding: 10px 10px; */
+	border-bottom: 1px solid transparent;
+	background-color: #797474;
+}
+.operationmodalview .view-footer {
+	height: 10px;
+	text-align: center; vertical-align: middle;
+	/* background-color: #686161; */
+	background-color: #5e5252;
+}
+
+
